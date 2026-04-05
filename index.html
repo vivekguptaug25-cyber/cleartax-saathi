@@ -167,12 +167,12 @@
     #hero::before {
       width: 380px; height: 380px;
       right: -120px; top: 110px;
-      background: radial-gradient(circle, rgba(255,214,102,0.16), rgba(255,214,102,0.02) 62%, transparent 70%);
+      background: radial-gradient(circle, rgba(255,214,102,0.1), rgba(255,214,102,0.015) 62%, transparent 72%);
     }
     #hero::after {
       width: 320px; height: 320px;
       left: -80px; bottom: 80px;
-      background: radial-gradient(circle, rgba(16,185,129,0.18), rgba(16,185,129,0.03) 60%, transparent 72%);
+      background: radial-gradient(circle, rgba(16,185,129,0.12), rgba(16,185,129,0.02) 60%, transparent 72%);
     }
     .hero-shell {
       width: min(1200px, 100%);
@@ -186,7 +186,7 @@
     .hero-copy {
       text-align: left;
       position: relative;
-      z-index: 1;
+      z-index: 3;
     }
     .hero-glow {
       position: absolute; width: 700px; height: 700px; border-radius: 50%;
@@ -205,9 +205,9 @@
     .hero-visual {
       position: relative;
       min-height: 620px;
-      width: min(520px, 100%);
+      width: min(620px, 100%);
       margin-left: auto;
-      padding: 24px 28px 96px;
+      padding: 24px 84px 112px 28px;
       pointer-events: none;
       z-index: 1;
       display: flex; align-items: center; justify-content: center;
@@ -234,9 +234,9 @@
     }
     .hero-dashboard {
       position: absolute;
-      right: -8px;
-      bottom: 12px;
-      width: min(300px, 64%);
+      right: 0;
+      bottom: 22px;
+      width: 240px;
       padding: 22px;
       border-radius: 28px;
       background: linear-gradient(180deg, rgba(17,24,39,0.92), rgba(15,23,42,0.72));
@@ -316,7 +316,7 @@
     .hero-mini-copy { font-size: 13px; line-height: 1.6; color: var(--titanium-muted); }
     .hero-portrait-card {
       position: relative;
-      width: min(390px, 78%);
+      width: min(400px, 74%);
       min-height: 560px;
       border-radius: 34px;
       overflow: hidden;
