@@ -438,6 +438,20 @@
     .stat-num { font-size: 2.4rem; font-weight: 900; letter-spacing: -0.04em; color: var(--titanium); }
     .stat-label { font-size: 13px; color: var(--titanium-dim); margin-top: 4px; font-weight: 500; }
 
+    #hero .hero-tag,
+    #hero .hero-badge-strip,
+    #hero .hero-sub,
+    #hero .hero-actions,
+    #hero .hero-stats,
+    #hero .hero-visual {
+      opacity: 1;
+      transform: none;
+    }
+    #hero .hero-headline .word-inner {
+      transform: none;
+      opacity: 1;
+    }
+
     @media(min-width:769px) {
       #hero {
         background:
@@ -466,15 +480,19 @@
         padding-top: 38px;
       }
       .hero-visual {
-        justify-content: flex-start;
-        width: min(700px, 100%);
+        display: grid;
+        grid-template-columns: 360px 224px;
+        align-items: center;
+        justify-content: center;
+        column-gap: 26px;
+        width: min(720px, 100%);
         min-height: 640px;
-        padding: 8px 0 24px 18px;
+        padding: 8px 0 24px 0;
       }
       .hero-visual::before {
         content: '';
         position: absolute;
-        inset: 18px 96px 64px 54px;
+        inset: 28px 34px 48px 34px;
         border-radius: 36px;
         background:
           linear-gradient(180deg, rgba(23,168,133,0.18), rgba(10,24,38,0.08)),
@@ -483,17 +501,20 @@
         z-index: 0;
       }
       .hero-orbit {
-        left: 14px;
+        left: 50%;
+        transform: translateX(-50%);
       }
       .hero-portrait-card {
         width: 360px;
-        margin-left: 42px;
+        margin-left: 0;
       }
       .hero-dashboard {
-        top: 156px;
-        right: 18px;
+        position: relative;
+        top: auto;
+        right: auto;
         bottom: auto;
         width: 224px;
+        z-index: 2;
       }
     }
 
