@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cleartax Saathi — Premium Tax & Business Consultancy, New Delhi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;0,900;1,300&display=swap" rel="stylesheet" />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/SplitText.min.js"></script>
+
+  <style>
+    /* ─── Design Tokens ─────────────────────────────────── */
+    :root {
+      --midnight:   #0F172A;
+      --navy-dark:  #080F1E;
+      --navy-card:  #111827;
+      --emerald:    #10B981;
+      --emerald-dim:#059669;
+      --emerald-glow: rgba(16,185,129,0.18);
+      --emerald-glow-bright: rgba(16,185,129,0.35);
+      --titanium:   #F8FAFC;
+      --titanium-muted: #94A3B8;
+      --titanium-dim:   #64748B;
+      --border:     rgba(255,255,255,0.07);
+      --border-em:  rgba(16,185,129,0.3);
+      --card-bg:    rgba(17,24,39,0.7);
+      --glass-bg:   rgba(15,23,42,0.6);
+    }
+
+    /* ─── Reset & Base ──────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter Tight', system-ui, sans-serif;
+      background: var(--midnight);
+      color: var(--titanium);
+      overflow-x: hidden;
+      cursor: none;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; }
+
+    /* ─── Custom Cursor ──────────────────────────────────── */
+    #cursor-dot {
+      position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9999;
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--emerald);
+      transform: translate(-50%, -50%);
+      transition: transform 0.1s ease, width 0.25s ease, height 0.25s ease, opacity 0.25s ease;
+    }
+    #cursor-ring {
+      position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9998;
+      width: 36px; height: 36px; border-radius: 50%;
+      border: 1.5px solid rgba(16,185,129,0.55);
+      transform: translate(-50%, -50%);
+      transition: transform 0.18s ease, width 0.3s ease, height 0.3s ease, border-color 0.3s ease;
+    }
+    body.cursor-hovering #cursor-dot { opacity: 0; }
+    body.cursor-hovering #cursor-ring { width: 80px; height: 80px; border-color: var(--emerald); }
+
+    /* ─── Noise Texture Overlay ─────────────────────────── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      opacity: 0.4;
+    }
+
+    /* ─── Section Layout ─────────────────────────────────── */
+    section { position: relative; z-index: 1; }
+
+    /* ─── Utility Classes ───────────────────────────────── */
+    .em { color: var(--emerald); }
+    .muted { color: var(--titanium-muted); }
+    .tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 5px 14px; border-radius: 99px;
+      border: 1px solid var(--border-em);
+      background: rgba(16,185,129,0.08);
+      font-size: 12px; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--emerald);
+    }
+    .tag::before { content: ''; display: block; width: 6px; height: 6px; border-radius: 50%; background: var(--emerald); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1}50%{opacity:0.3} }
+
+    /* ─── Glass Card ─────────────────────────────────────── */
+    .glass-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(20px) saturate(160%);
+      -webkit-backdrop-filter: blur(20px) saturate(160%);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      position: relative; overflow: hidden;
+    }
+    .glass-card .spotlight {
+      position: absolute; width: 300px; height: 300px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(16,185,129,0.12) 0%, transparent 70%);
+      pointer-events: none; z-index: 0; opacity: 0;
+      transition: opacity 0.3s ease;
+      transform: translate(-50%, -50%);
+    }
+    .glass-card:hover .spotlight { opacity: 1; }
+    .glass-card > * { position: relative; z-index: 1; }
+
+    /* ─── NAV ────────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 20px 48px;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(8,15,30,0.7);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      transition: background 0.3s;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+    }
+    .nav-logo-icon {
+      width: 36px; height: 36px; border-radius: 10px;
+      background: linear-gradient(135deg, var(--emerald), #065F46);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 900; font-size: 16px; color: white;
+    }
+    .nav-logo-text { font-size: 17px; font-weight: 700; letter-spacing: -0.02em; }
+    .nav-logo-text span { color: var(--emerald); }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a { font-size: 14px; color: var(--titanium-muted); font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--titanium); }
+    .nav-cta {
+      padding: 10px 22px; border-radius: 99px;
+      background: var(--emerald); color: #021712;
+      font-size: 14px; font-weight: 700; letter-spacing: -0.01em;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .nav-cta:hover { transform: scale(1.04); box-shadow: 0 0 24px rgba(16,185,129,0.5); }
+
+    @media(max-width:768px) {
+      nav { padding: 16px 20px; }
+      .nav-links { display: none; }
+    }
+
+    /* ─── HERO ───────────────────────────────────────────── */
+    #hero {
+      min-height: 100vh; display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 160px 48px 80px;
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .hero-glow {
+      position: absolute; width: 700px; height: 700px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(16,185,129,0.12) 0%, transparent 65%);
+      top: 50%; left: 50%; transform: translate(-50%, -50%);
+      pointer-events: none; z-index: 0;
+    }
+    .hero-grid-lines {
+      position: absolute; inset: 0; pointer-events: none; z-index: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 80px 80px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black, transparent);
+    }
+    .hero-tag { margin-bottom: 32px; }
+    .hero-headline {
+      font-size: clamp(3rem, 7vw, 7rem);
+      font-weight: 900;
+      line-height: 1.0;
+      letter-spacing: -0.04em;
+      margin-bottom: 28px;
+      background: linear-gradient(180deg, #fff 0%, rgba(255,255,255,0.7) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+      position: relative; z-index: 1;
+    }
+    .hero-headline .word { display: inline-block; overflow: hidden; margin-right: 0.2em; }
+    .hero-headline .word-inner { display: block; transform: translateY(110%); }
+    .hero-sub {
+      max-width: 560px; margin: 0 auto 52px;
+      font-size: clamp(1rem, 1.6vw, 1.2rem);
+      color: var(--titanium-muted); font-weight: 400; line-height: 1.7;
+      position: relative; z-index: 1;
+    }
+    .hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; position: relative; z-index: 1; }
+
+    /* Magnetic Button */
+    .magnetic-btn-wrap { display: inline-block; }
+    .btn-primary {
+      padding: 16px 36px; border-radius: 99px;
+      background: var(--emerald); color: #021712;
+      font-size: 16px; font-weight: 700; letter-spacing: -0.01em;
+      display: inline-flex; align-items: center; gap: 10px;
+      transition: box-shadow 0.3s;
+      will-change: transform;
+    }
+    .btn-primary:hover { box-shadow: 0 0 48px rgba(16,185,129,0.55); }
+    .btn-secondary {
+      padding: 16px 36px; border-radius: 99px;
+      border: 1px solid var(--border);
+      background: transparent; color: var(--titanium);
+      font-size: 16px; font-weight: 600;
+      display: inline-flex; align-items: center; gap: 10px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .btn-secondary:hover { border-color: var(--emerald); background: var(--emerald-glow); }
+
+    .hero-stats {
+      display: flex; gap: 60px; justify-content: center; flex-wrap: wrap;
+      margin-top: 80px; padding-top: 48px;
+      border-top: 1px solid var(--border);
+      position: relative; z-index: 1;
+    }
+    .stat-item { text-align: center; }
+    .stat-num { font-size: 2.4rem; font-weight: 900; letter-spacing: -0.04em; color: var(--titanium); }
+    .stat-label { font-size: 13px; color: var(--titanium-dim); margin-top: 4px; font-weight: 500; }
+
+    @media(max-width:768px) {
+      #hero { padding: 140px 20px 60px; }
+      .hero-stats { gap: 32px; margin-top: 48px; }
+    }
+
+    /* ─── MARQUEE ────────────────────────────────────────── */
+    .marquee-section {
+      padding: 24px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      overflow: hidden; background: rgba(8,15,30,0.5);
+    }
+    .marquee-track {
+      display: flex; gap: 0; width: max-content;
+      animation: marquee 28s linear infinite;
+    }
+    .marquee-item {
+      display: flex; align-items: center; gap: 12px;
+      padding: 0 40px; white-space: nowrap;
+      font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--titanium-dim);
+    }
+    .marquee-item-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--emerald); flex-shrink: 0; }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ─── SECTION HEADER ─────────────────────────────────── */
+    .sec-header {
+      max-width: 640px;
+      margin-bottom: 64px;
+    }
+    .sec-header h2 {
+      font-size: clamp(2.2rem, 4vw, 3.8rem);
+      font-weight: 900; letter-spacing: -0.04em;
+      line-height: 1.05; margin-top: 16px; margin-bottom: 16px;
+    }
+    .sec-header p { font-size: 1.05rem; color: var(--titanium-muted); line-height: 1.7; }
+
+    /* ─── SERVICES / BENTO ───────────────────────────────── */
+    #services { padding: 120px 48px; }
+
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto;
+      gap: 16px;
+      max-width: 1200px; margin: 0 auto;
+    }
+
+    .bento-card {
+      padding: 36px 32px;
+      border-radius: 24px;
+      cursor: default;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .bento-card:hover { transform: translateY(-4px); box-shadow: 0 24px 60px rgba(0,0,0,0.5); }
+
+    .bento-c1 { grid-column: 1 / 3; grid-row: 1; }
+    .bento-c2 { grid-column: 3 / 4; grid-row: 1 / 3; }
+    .bento-c3 { grid-column: 1 / 2; grid-row: 2; }
+    .bento-c4 { grid-column: 2 / 3; grid-row: 2; }
+
+    .bento-icon {
+      width: 52px; height: 52px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px; margin-bottom: 24px;
+      background: var(--emerald-glow);
+      border: 1px solid var(--border-em);
+    }
+    .bento-num {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--emerald);
+      margin-bottom: 12px;
+    }
+    .bento-title {
+      font-size: 1.35rem; font-weight: 800; letter-spacing: -0.02em;
+      margin-bottom: 12px; line-height: 1.2;
+    }
+    .bento-c1 .bento-title { font-size: clamp(1.5rem, 2.5vw, 2rem); }
+    .bento-desc { font-size: 0.9rem; color: var(--titanium-muted); line-height: 1.7; }
+    .bento-footer {
+      margin-top: 28px; display: flex; align-items: center; gap: 8px;
+      font-size: 13px; font-weight: 600; color: var(--emerald);
+    }
+    .bento-arrow { font-size: 16px; transition: transform 0.2s; }
+    .bento-card:hover .bento-arrow { transform: translateX(4px); }
+
+    /* Pill list inside bento */
+    .bento-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+    .bento-pill {
+      padding: 4px 12px; border-radius: 99px; font-size: 12px; font-weight: 600;
+      background: rgba(16,185,129,0.1); border: 1px solid var(--border-em);
+      color: var(--titanium-muted);
+    }
+
+    @media(max-width:900px) {
+      .bento-grid { grid-template-columns: 1fr 1fr; }
+      .bento-c1 { grid-column: 1 / 3; grid-row: 1; }
+      .bento-c2 { grid-column: 1 / 2; grid-row: 2; }
+      .bento-c3 { grid-column: 2 / 3; grid-row: 2; }
+      .bento-c4 { grid-column: 1 / 3; grid-row: 3; }
+    }
+    @media(max-width:600px) {
+      #services { padding: 80px 20px; }
+      .bento-grid { grid-template-columns: 1fr; }
+      .bento-c1,.bento-c2,.bento-c3,.bento-c4 { grid-column: 1; grid-row: auto; }
+    }
+
+    /* ─── STACKING CARDS (PROCESS) ──────────────────────── */
+    #process { padding: 120px 48px; }
+    .stack-container { position: relative; max-width: 780px; margin: 0 auto; }
+    .stack-card {
+      position: sticky; top: 120px;
+      padding: 48px 52px;
+      border-radius: 28px;
+      margin-bottom: 20px;
+    }
+    .stack-card:last-child { margin-bottom: 0; }
+    .stack-step { font-size: 64px; font-weight: 900; letter-spacing: -0.06em; color: rgba(16,185,129,0.12); line-height: 1; margin-bottom: 8px; }
+    .stack-title { font-size: 1.9rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 14px; }
+    .stack-desc { font-size: 1rem; color: var(--titanium-muted); line-height: 1.75; }
+    .stack-card-bg1 { background: #111827; }
+    .stack-card-bg2 { background: #0F1F2E; }
+    .stack-card-bg3 { background: #111827; }
+
+    @media(max-width:768px) {
+      #process { padding: 80px 20px; }
+      .stack-card { padding: 32px 28px; }
+      .stack-title { font-size: 1.5rem; }
+    }
+
+    /* ─── COMPLIANCE CLOCK ───────────────────────────────── */
+    #compliance { padding: 120px 48px; }
+    .clock-wrapper {
+      max-width: 900px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: center;
+    }
+    .clock-card {
+      padding: 52px 44px;
+      border-radius: 28px;
+      border: 1px solid var(--border-em);
+      background: linear-gradient(135deg, rgba(16,185,129,0.08) 0%, rgba(15,23,42,0.9) 100%);
+    }
+    .clock-label {
+      font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--emerald); margin-bottom: 20px; display: flex; align-items: center; gap: 8px;
+    }
+    .clock-label::before { content:''; display:block; width:8px;height:8px;border-radius:50%;background:var(--emerald);animation:pulse 1.5s infinite; }
+    .clock-display {
+      display: flex; gap: 16px; align-items: flex-end; flex-wrap: wrap;
+    }
+    .clock-unit { text-align: center; }
+    .clock-num {
+      font-size: clamp(3rem, 5vw, 4.5rem); font-weight: 900; letter-spacing: -0.05em;
+      line-height: 1; color: var(--titanium);
+      font-variant-numeric: tabular-nums;
+    }
+    .clock-unit-label { font-size: 11px; color: var(--titanium-dim); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 4px; }
+    .clock-sep { font-size: 2.5rem; font-weight: 300; color: var(--emerald); margin-bottom: 14px; opacity: 0.6; }
+    .clock-deadline-name { font-size: 1.35rem; font-weight: 700; margin-top: 24px; margin-bottom: 6px; }
+    .clock-deadline-date { font-size: 0.9rem; color: var(--titanium-dim); }
+    .clock-info-card { padding: 36px 32px; border-radius: 24px; }
+    .clock-info-title { font-size: 1.6rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 16px; }
+    .clock-info-desc { font-size: 0.95rem; color: var(--titanium-muted); line-height: 1.75; margin-bottom: 28px; }
+    .deadline-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .deadline-item {
+      display: flex; align-items: center; gap: 12px;
+      padding: 14px 18px; border-radius: 12px;
+      background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+      font-size: 13px; font-weight: 600;
+    }
+    .deadline-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--emerald); flex-shrink: 0; }
+    .deadline-date { color: var(--titanium-dim); margin-left: auto; font-size: 12px; }
+
+    @media(max-width:768px) {
+      #compliance { padding: 80px 20px; }
+      .clock-wrapper { grid-template-columns: 1fr; }
+    }
+
+    /* ─── FOUNDER ────────────────────────────────────────── */
+    #founder { padding: 120px 48px; }
+    .founder-grid {
+      max-width: 1000px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1.4fr; gap: 32px; align-items: center;
+    }
+    .founder-avatar-card {
+      padding: 48px 32px; border-radius: 28px; text-align: center;
+    }
+    .founder-initials {
+      width: 100px; height: 100px; border-radius: 50%; margin: 0 auto 24px;
+      background: linear-gradient(135deg, var(--emerald), #065F46);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.4rem; font-weight: 900; color: white;
+      box-shadow: 0 0 0 6px rgba(16,185,129,0.15);
+    }
+    .founder-name { font-size: 1.7rem; font-weight: 900; letter-spacing: -0.03em; }
+    .founder-title { font-size: 0.875rem; color: var(--titanium-dim); margin-top: 6px; }
+    .founder-creds {
+      margin-top: 24px; display: flex; flex-direction: column; gap: 10px;
+    }
+    .founder-cred {
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px 16px; border-radius: 10px;
+      background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+      font-size: 13px; font-weight: 500; text-align: left;
+    }
+    .founder-cred-icon { font-size: 16px; flex-shrink: 0; }
+    .founder-content { padding: 48px 44px; border-radius: 28px; }
+    .founder-quote {
+      font-size: clamp(1.2rem, 2vw, 1.65rem); font-weight: 700; letter-spacing: -0.025em;
+      line-height: 1.4; margin-bottom: 24px;
+      border-left: 3px solid var(--emerald); padding-left: 24px;
+    }
+    .founder-body { font-size: 0.95rem; color: var(--titanium-muted); line-height: 1.8; margin-bottom: 28px; }
+    .founder-hq {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 16px 20px; border-radius: 12px;
+      background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+    }
+    .hq-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+    .hq-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--titanium-dim); font-weight: 700; }
+    .hq-address { font-size: 13px; color: var(--titanium-muted); margin-top: 4px; line-height: 1.5; }
+
+    @media(max-width:768px) {
+      #founder { padding: 80px 20px; }
+      .founder-grid { grid-template-columns: 1fr; }
+      .founder-content { padding: 32px 28px; }
+    }
+
+    /* ─── WHY US ─────────────────────────────────────────── */
+    #why { padding: 120px 48px; }
+    .why-grid {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+    }
+    .why-card { padding: 36px 32px; border-radius: 20px; }
+    .why-icon { font-size: 2.2rem; margin-bottom: 20px; }
+    .why-title { font-size: 1.15rem; font-weight: 800; letter-spacing: -0.025em; margin-bottom: 10px; }
+    .why-desc { font-size: 0.875rem; color: var(--titanium-muted); line-height: 1.7; }
+
+    @media(max-width:900px) { .why-grid { grid-template-columns: 1fr 1fr; } }
+    @media(max-width:600px) {
+      #why { padding: 80px 20px; }
+      .why-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ─── CTA BANNER ─────────────────────────────────────── */
+    #cta { padding: 80px 48px 100px; }
+    .cta-card {
+      max-width: 900px; margin: 0 auto;
+      padding: 72px 64px;
+      border-radius: 32px;
+      text-align: center;
+      background: linear-gradient(135deg, rgba(16,185,129,0.15) 0%, rgba(15,23,42,0.8) 50%, rgba(16,185,129,0.08) 100%);
+      border: 1px solid var(--border-em);
+      position: relative; overflow: hidden;
+    }
+    .cta-card::before {
+      content: '';
+      position: absolute; width: 500px; height: 500px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(16,185,129,0.1) 0%, transparent 70%);
+      top: 50%; left: 50%; transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+    .cta-card h2 {
+      font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 900; letter-spacing: -0.04em;
+      margin-bottom: 16px; position: relative; z-index: 1;
+    }
+    .cta-card p { font-size: 1.05rem; color: var(--titanium-muted); margin-bottom: 40px; position: relative; z-index: 1; }
+    .cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; position: relative; z-index: 1; }
+    .btn-whatsapp {
+      padding: 16px 36px; border-radius: 99px;
+      background: #25D366; color: white;
+      font-size: 16px; font-weight: 700; letter-spacing: -0.01em;
+      display: inline-flex; align-items: center; gap: 10px;
+      transition: box-shadow 0.3s, transform 0.2s;
+    }
+    .btn-whatsapp:hover { box-shadow: 0 0 40px rgba(37,211,102,0.45); transform: translateY(-2px); }
+
+    @media(max-width:768px) {
+      #cta { padding: 40px 20px 80px; }
+      .cta-card { padding: 48px 28px; }
+    }
+
+    /* ─── FOOTER ─────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 60px 48px 40px;
+      position: relative; z-index: 1;
+    }
+    .footer-grid {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 48px;
+    }
+    .footer-logo { margin-bottom: 16px; }
+    .footer-desc { font-size: 13px; color: var(--titanium-dim); line-height: 1.7; max-width: 240px; }
+    .footer-col-title { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--titanium-muted); margin-bottom: 20px; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .footer-links a { font-size: 13px; color: var(--titanium-dim); transition: color 0.2s; }
+    .footer-links a:hover { color: var(--emerald); }
+    .footer-bottom {
+      max-width: 1100px; margin: 48px auto 0; padding-top: 28px; border-top: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: gap;
+      font-size: 12px; color: var(--titanium-dim);
+    }
+    .footer-em { color: var(--emerald); }
+
+    @media(max-width:900px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; } }
+    @media(max-width:600px) {
+      footer { padding: 48px 20px 32px; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+    }
+
+    /* ─── Scroll-reveal util ─────────────────────────────── */
+    .reveal { opacity: 0; transform: translateY(30px); }
+
+    /* ─── Section container util ───────────────────────── */
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+
+    /* ─── Decorative rule ────────────────────────────────── */
+    .em-hr {
+      border: none; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--emerald), transparent);
+      margin: 0 0 80px; opacity: 0.35;
+      max-width: 1200px; margin-left: auto; margin-right: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Custom Cursor -->
+  <div id="cursor-dot"></div>
+  <div id="cursor-ring"></div>
+
+  <!-- ═══ NAV ═══════════════════════════════════════════ -->
+  <nav id="nav">
+    <div class="nav-logo">
+      <div class="nav-logo-icon">CS</div>
+      <span class="nav-logo-text">Cleartax <span>Saathi</span></span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#compliance">Compliance</a></li>
+      <li><a href="#founder">About</a></li>
+      <li><a href="#why">Why Us</a></li>
+    </ul>
+    <a href="https://wa.me/918882453238" class="nav-cta">Get Started →</a>
+  </nav>
+
+  <!-- ═══ HERO ══════════════════════════════════════════ -->
+  <section id="hero">
+    <div class="hero-glow"></div>
+    <div class="hero-grid-lines"></div>
+
+    <div class="hero-tag tag reveal">New Delhi's Premier Tax Advisory</div>
+
+    <h1 class="hero-headline" id="hero-headline">
+      <span class="word"><span class="word-inner">Redefining</span></span>
+      <span class="word"><span class="word-inner">Financial</span></span>
+      <span class="word"><span class="word-inner">Integrity.</span></span>
+    </h1>
+
+    <p class="hero-sub reveal">
+      Premium Tax, Audit, and Compliance solutions for India's next generation of enterprises. Expert-led, tech-driven.
+    </p>
+
+    <div class="hero-actions reveal">
+      <div class="magnetic-btn-wrap" id="magnetic-cta">
+        <a href="https://wa.me/918882453238" class="btn-primary">
+          Book Free Consultation
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+      <a href="#services" class="btn-secondary">
+        Explore Services
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12l4 4 4-4"/></svg>
+      </a>
+    </div>
+
+    <div class="hero-stats reveal">
+      <div class="stat-item">
+        <div class="stat-num" data-count="500">0<span>+</span></div>
+        <div class="stat-label">Clients Served</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num" data-count="12">0<span>+</span></div>
+        <div class="stat-label">Years of Expertise</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num" data-count="98">0<span>%</span></div>
+        <div class="stat-label">Compliance Rate</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num"><span>₹</span>200<span>Cr+</span></div>
+        <div class="stat-label">Tax Filed Successfully</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ MARQUEE ════════════════════════════════════════ -->
+  <div class="marquee-section">
+    <div class="marquee-track" id="marquee">
+      <!-- Items duplicated in JS -->
+    </div>
+  </div>
+
+  <!-- ═══ SERVICES / BENTO ══════════════════════════════ -->
+  <section id="services" style="padding: 120px 48px;">
+    <div class="section-inner">
+      <div class="sec-header reveal">
+        <div class="tag">Our Services</div>
+        <h2>A complete financial ecosystem, <em style="font-style:normal;color:var(--emerald)">built for growth.</em></h2>
+        <p>From GST filing to company formation, we handle the complexity so you can focus on building what matters.</p>
+      </div>
+
+      <div class="bento-grid">
+        <!-- Card 1 - Wide -->
+        <div class="glass-card bento-card bento-c1 bento-spotlight">
+          <div class="spotlight"></div>
+          <div class="bento-num">01 — GST Ecosystem</div>
+          <div class="bento-title">End-to-end GST Management for your Business</div>
+          <div class="bento-desc">From registration to monthly reconciliation — we ensure your GST compliance is airtight, penalty-free, and optimised for your industry.</div>
+          <div class="bento-pills">
+            <span class="bento-pill">GST Registration</span>
+            <span class="bento-pill">GSTR-1 &amp; 3B Filing</span>
+            <span class="bento-pill">ITC Reconciliation</span>
+            <span class="bento-pill">Annual Return</span>
+            <span class="bento-pill">GST Audit</span>
+          </div>
+          <div class="bento-footer">Explore GST Services <span class="bento-arrow">→</span></div>
+        </div>
+
+        <!-- Card 2 - Tall right -->
+        <div class="glass-card bento-card bento-c2 bento-spotlight">
+          <div class="spotlight"></div>
+          <div class="bento-icon">🏛️</div>
+          <div class="bento-num">04 — Company Formation</div>
+          <div class="bento-title">Start Your Pvt Ltd or LLP in 7 Days</div>
+          <div class="bento-desc">Complete end-to-end company incorporation — MCA filing, PAN/TAN application, bank account advisory, and post-formation compliance setup.</div>
+          <div class="bento-pills" style="margin-top:20px;">
+            <span class="bento-pill">Pvt. Ltd.</span>
+            <span class="bento-pill">LLP</span>
+            <span class="bento-pill">OPC</span>
+            <span class="bento-pill">Partnership</span>
+          </div>
+          <div style="margin-top:32px;padding:20px;border-radius:14px;background:rgba(16,185,129,0.08);border:1px solid var(--border-em);">
+            <div style="font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--emerald);font-weight:700;margin-bottom:8px;">Fast-track Promise</div>
+            <div style="font-size:1.8rem;font-weight:900;letter-spacing:-.04em;">7 Days</div>
+            <div style="font-size:13px;color:var(--titanium-dim);margin-top:4px;">Average Incorporation Time</div>
+          </div>
+          <div class="bento-footer" style="margin-top:24px;">Start Incorporation <span class="bento-arrow">→</span></div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="glass-card bento-card bento-c3 bento-spotlight">
+          <div class="spotlight"></div>
+          <div class="bento-icon">📊</div>
+          <div class="bento-num">02 — Income Tax & TDS</div>
+          <div class="bento-title">Strategic ITR Filing for Individuals & HUFs</div>
+          <div class="bento-desc">Tax planning, ITR filing, TDS returns and notice resolution — handled by CAs who understand your financial profile.</div>
+          <div class="bento-footer">File Your ITR <span class="bento-arrow">→</span></div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="glass-card bento-card bento-c4 bento-spotlight">
+          <div class="spotlight"></div>
+          <div class="bento-icon">🔍</div>
+          <div class="bento-num">03 — Audit & Assurance</div>
+          <div class="bento-title">Internal Audits that Drive Business Growth</div>
+          <div class="bento-desc">We turn statutory obligations into strategic insights — uncovering operational risks and growth levers through rigorous audit methodology.</div>
+          <div class="bento-footer">Learn About Audits <span class="bento-arrow">→</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PROCESS / STACKING CARDS ══════════════════════ -->
+  <section id="process" style="padding: 120px 48px;">
+    <div class="section-inner">
+      <div class="sec-header reveal" style="margin:0 auto 80px;text-align:center;max-width:560px;">
+        <div class="tag" style="margin:0 auto 16px;">How We Work</div>
+        <h2>A structured path to <em style="font-style:normal;color:var(--emerald)">total compliance.</em></h2>
+      </div>
+      <div class="stack-container">
+        <div class="glass-card stack-card stack-card-bg1">
+          <div class="stack-step">01</div>
+          <div class="stack-title">Deep-Dive Discovery Call</div>
+          <div class="stack-desc">We begin with a comprehensive 30-minute consultation to understand your business structure, revenue model, and compliance status. No assumptions — just precise diagnosis. This session is completely free of charge.</div>
+        </div>
+        <div class="glass-card stack-card stack-card-bg2">
+          <div class="stack-step">02</div>
+          <div class="stack-title">Custom Compliance Roadmap</div>
+          <div class="stack-desc">Our CAs design a bespoke tax and compliance strategy tailored to your entity type, sector, and growth stage. You receive a clear action plan with timelines, costs, and responsibilities laid out transparently.</div>
+        </div>
+        <div class="glass-card stack-card stack-card-bg3">
+          <div class="stack-step">03</div>
+          <div class="stack-title">Execution & Continuous Advisory</div>
+          <div class="stack-desc">We file, reconcile, and advise on an ongoing basis — with dedicated support via WhatsApp, email, and in-person at our Dabri Moad headquarters. You're never alone in a compliance emergency.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ COMPLIANCE CLOCK ═══════════════════════════════ -->
+  <section id="compliance" style="padding: 120px 48px;">
+    <div class="section-inner">
+      <hr class="em-hr" />
+      <div class="clock-wrapper">
+        <div class="clock-card reveal">
+          <div class="clock-label">Live Compliance Clock</div>
+          <div class="clock-display">
+            <div class="clock-unit">
+              <div class="clock-num" id="cd-days">00</div>
+              <div class="clock-unit-label">Days</div>
+            </div>
+            <div class="clock-sep">:</div>
+            <div class="clock-unit">
+              <div class="clock-num" id="cd-hours">00</div>
+              <div class="clock-unit-label">Hours</div>
+            </div>
+            <div class="clock-sep">:</div>
+            <div class="clock-unit">
+              <div class="clock-num" id="cd-mins">00</div>
+              <div class="clock-unit-label">Mins</div>
+            </div>
+            <div class="clock-sep">:</div>
+            <div class="clock-unit">
+              <div class="clock-num" id="cd-secs">00</div>
+              <div class="clock-unit-label">Secs</div>
+            </div>
+          </div>
+          <div class="clock-deadline-name" id="cd-name">GSTR-3B (March 2026)</div>
+          <div class="clock-deadline-date" id="cd-date">Deadline: 20th April 2026</div>
+        </div>
+
+        <div class="glass-card clock-info-card reveal">
+          <div class="clock-info-title">Upcoming GST Deadlines</div>
+          <div class="clock-info-desc">Stay ahead of the compliance calendar. Missing a filing date can trigger penalties under Section 47 of the CGST Act. We file on time, every time.</div>
+          <ul class="deadline-list">
+            <li class="deadline-item">
+              <span class="deadline-dot"></span>
+              <span>GSTR-3B (Mar 2026)</span>
+              <span class="deadline-date">20 Apr 2026</span>
+            </li>
+            <li class="deadline-item">
+              <span class="deadline-dot" style="background:#F59E0B;"></span>
+              <span>GSTR-1 (Mar 2026)</span>
+              <span class="deadline-date">11 Apr 2026</span>
+            </li>
+            <li class="deadline-item">
+              <span class="deadline-dot" style="background:#6366F1;"></span>
+              <span>TDS Return Q4 FY25-26</span>
+              <span class="deadline-date">31 May 2026</span>
+            </li>
+            <li class="deadline-item">
+              <span class="deadline-dot" style="background:#EC4899;"></span>
+              <span>ITR Filing (Non-Audit)</span>
+              <span class="deadline-date">31 Jul 2026</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOUNDER ════════════════════════════════════════ -->
+  <section id="founder" style="padding: 120px 48px;">
+    <div class="section-inner">
+      <div class="founder-grid">
+        <div class="glass-card founder-avatar-card reveal">
+          <div class="founder-initials">AG</div>
+          <div class="founder-name">Amit Goyal</div>
+          <div class="founder-title">Founder & Principal Advisor</div>
+          <div class="founder-creds">
+            <div class="founder-cred">
+              <span class="founder-cred-icon">🏆</span>
+              <span>Chartered Accountant (ICAI)</span>
+            </div>
+            <div class="founder-cred">
+              <span class="founder-cred-icon">📍</span>
+              <span>Based in Dabri Moad, New Delhi</span>
+            </div>
+            <div class="founder-cred">
+              <span class="founder-cred-icon">⚖️</span>
+              <span>GST & Income Tax Practitioner</span>
+            </div>
+            <div class="founder-cred">
+              <span class="founder-cred-icon">🏢</span>
+              <span>Registered with GSTN & MCA</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-card founder-content reveal">
+          <div class="tag" style="margin-bottom:24px;">A Message from the Founder</div>
+          <div class="founder-quote">
+            "Compliance is not a burden — it's the foundation on which great businesses are built."
+          </div>
+          <p class="founder-body">
+            At Cleartax Saathi, we believe every entrepreneur in India deserves access to the same caliber of financial expertise that was once reserved for large corporations. Our practice was built from the heart of West Delhi — from our office at Dabri Moad — with a singular mission: to make taxation transparent, proactive, and powerful for our clients.
+          </p>
+          <p class="founder-body">
+            With over a decade of experience spanning GST, income tax, corporate law, and business advisory, we bring precision and personal attention to every engagement. When you work with us, you work directly with Amit Goyal — not a junior associate.
+          </p>
+          <div class="founder-hq">
+            <span class="hq-icon">📌</span>
+            <div>
+              <div class="hq-label">Our Headquarters</div>
+              <div class="hq-address">B33 Sitapuri Extension Part 1, Street No. 4, Dabri Moad, New Delhi 110045</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ WHY US ════════════════════════════════════════ -->
+  <section id="why" style="padding: 120px 48px;">
+    <div class="section-inner">
+      <div class="sec-header reveal" style="margin:0 auto 64px;text-align:center;max-width:560px;">
+        <div class="tag" style="margin: 0 auto 16px;">Why Cleartax Saathi</div>
+        <h2>The Cleartax Saathi <em style="font-style:normal;color:var(--emerald)">difference.</em></h2>
+      </div>
+      <div class="why-grid">
+        <div class="glass-card why-card reveal">
+          <div class="why-icon">⚡</div>
+          <div class="why-title">Tech-First Workflow</div>
+          <div class="why-desc">We use modern compliance software and secure document portals — no paperwork chaos, no last-minute scrambles. Everything is tracked and delivered on time.</div>
+        </div>
+        <div class="glass-card why-card reveal">
+          <div class="why-icon">🎯</div>
+          <div class="why-title">Direct Partner Access</div>
+          <div class="why-desc">You speak directly with Amit Goyal — a practicing CA — not an entry-level executive. Your concerns are addressed by the expert, every single time.</div>
+        </div>
+        <div class="glass-card why-card reveal">
+          <div class="why-icon">🔒</div>
+          <div class="why-title">Zero-Penalty Promise</div>
+          <div class="why-desc">We've maintained a zero-penalty record across our client portfolio. Our proactive calendar and automated reminders ensure you never miss a critical deadline.</div>
+        </div>
+        <div class="glass-card why-card reveal">
+          <div class="why-icon">📈</div>
+          <div class="why-title">Growth-Oriented Advisory</div>
+          <div class="why-desc">We don't just file returns — we advise on tax-efficient structures, optimal business decisions, and compliance strategies that unlock real financial growth.</div>
+        </div>
+        <div class="glass-card why-card reveal">
+          <div class="why-icon">🤝</div>
+          <div class="why-title">Fixed, Transparent Pricing</div>
+          <div class="why-desc">No hidden charges, no surprise invoices. Our engagement letters clearly outline scope and fees — because trust begins with financial transparency.</div>
+        </div>
+        <div class="glass-card why-card reveal">
+          <div class="why-icon">🌐</div>
+          <div class="why-title">West Delhi Rooted, Pan-India Ready</div>
+          <div class="why-desc">Headquartered in Dabri Moad, New Delhi, we serve clients across India through digital-first delivery, with the personal touch of a neighborhood CA firm.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CTA BANNER ════════════════════════════════════ -->
+  <section id="cta" style="padding: 80px 48px 100px;">
+    <div class="cta-card glass-card reveal">
+      <div class="tag" style="margin: 0 auto 32px; display:inline-flex;">New Delhi's Most Trusted Tax Advisors</div>
+      <h2>Your compliance journey starts with <span class="em">one conversation.</span></h2>
+      <p>Book a free 30-minute consultation with Amit Goyal. No obligation. No jargon. Just clarity.</p>
+      <div class="cta-actions">
+        <a href="https://wa.me/918882453238?text=Hi%20Amit%2C%20I%20would%20like%20to%20book%20a%20free%20consultation%20with%20Cleartax%20Saathi." class="btn-whatsapp">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Chat on WhatsApp
+        </a>
+        <a href="tel:+918882453238" class="btn-secondary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.69 10.5a19.79 19.79 0 01-3.07-8.67A2 2 0 013.59 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L7.91 7.91a16 16 0 006.29 6.29l.95-.95a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 15.43v1.49z"/></svg>
+          Call +91 88824 53238
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ════════════════════════════════════════ -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo nav-logo">
+          <div class="nav-logo-icon">CS</div>
+          <span class="nav-logo-text">Cleartax <span>Saathi</span></span>
+        </div>
+        <p class="footer-desc" style="margin-top:16px;">New Delhi's premier tax and business consultancy. Expert-led. Tech-driven. Trusted since 2012.</p>
+        <div style="margin-top:24px;display:flex;gap:12px;">
+          <a href="https://wa.me/918882453238" style="width:36px;height:36px;border-radius:10px;background:rgba(255,255,255,0.06);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:16px;transition:background .2s;" onmouseover="this.style.background='rgba(16,185,129,0.15)'" onmouseout="this.style.background='rgba(255,255,255,0.06)'">💬</a>
+          <a href="tel:+918882453238" style="width:36px;height:36px;border-radius:10px;background:rgba(255,255,255,0.06);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:16px;transition:background .2s;" onmouseover="this.style.background='rgba(16,185,129,0.15)'" onmouseout="this.style.background='rgba(255,255,255,0.06)'">📞</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Services</div>
+        <ul class="footer-links">
+          <li><a href="#services">GST Registration & Filing</a></li>
+          <li><a href="#services">Income Tax Returns</a></li>
+          <li><a href="#services">TDS Filing</a></li>
+          <li><a href="#services">Internal Audit</a></li>
+          <li><a href="#services">Company Formation</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Company</div>
+        <ul class="footer-links">
+          <li><a href="#founder">About Amit Goyal</a></li>
+          <li><a href="#why">Why Cleartax Saathi</a></li>
+          <li><a href="#compliance">Compliance Calendar</a></li>
+          <li><a href="#process">Our Process</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <ul class="footer-links">
+          <li><a href="https://wa.me/918882453238">WhatsApp: +91 88824 53238</a></li>
+          <li><a href="tel:+918882453238">Call: +91 88824 53238</a></li>
+          <li><a href="#">B33 Sitapuri Extension Part 1</a></li>
+          <li><a href="#">Street No. 4, Dabri Moad</a></li>
+          <li><a href="#">New Delhi 110045</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 <span class="footer-em">Cleartax Saathi</span>. All rights reserved. Registered in India.</span>
+      <span>Crafted with precision in New Delhi 🇮🇳</span>
+    </div>
+  </footer>
+
+  <!-- ═══ SCRIPTS ════════════════════════════════════════ -->
+  <script>
+  (function() {
+
+    // ── 1. Custom Cursor ──────────────────────────────────
+    const dot  = document.getElementById('cursor-dot');
+    const ring = document.getElementById('cursor-ring');
+    let mx = 0, my = 0, rx = 0, ry = 0;
+    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+    (function animCursor(){
+      rx += (mx - rx) * 0.18;
+      ry += (my - ry) * 0.18;
+      dot.style.left  = mx + 'px';
+      dot.style.top   = my + 'px';
+      ring.style.left = rx + 'px';
+      ring.style.top  = ry + 'px';
+      requestAnimationFrame(animCursor);
+    })();
+    document.querySelectorAll('a, button, .bento-card, .glass-card').forEach(el => {
+      el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hovering'));
+      el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hovering'));
+    });
+
+    // ── 2. Marquee content ────────────────────────────────
+    const partners = ['GSTN Registered', 'MCA Compliant', 'ICAI Member', 'ITR Expert', 'Startup India', 'MSME Certified', 'ISO 27001 Practices', 'Zero-Penalty Record', 'New Delhi Trusted'];
+    const marquee = document.getElementById('marquee');
+    const items = [...partners, ...partners, ...partners, ...partners].map(p =>
+      `<div class="marquee-item"><span class="marquee-item-dot"></span>${p}</div>`
+    ).join('');
+    marquee.innerHTML = items;
+
+    // ── 3. Bento Spotlight Effect ─────────────────────────
+    document.querySelectorAll('.bento-spotlight').forEach(card => {
+      const spot = card.querySelector('.spotlight');
+      card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        spot.style.left = (e.clientX - rect.left) + 'px';
+        spot.style.top  = (e.clientY - rect.top)  + 'px';
+      });
+    });
+
+    // ── 4. Compliance Clock ───────────────────────────────
+    function updateClock() {
+      const deadlines = [
+        { name: 'GSTR-1 (Mar 2026)',   date: new Date('2026-04-11T23:59:59') },
+        { name: 'GSTR-3B (Mar 2026)', date: new Date('2026-04-20T23:59:59') },
+        { name: 'TDS Return Q4',       date: new Date('2026-05-31T23:59:59') },
+      ];
+      const now = new Date();
+      const next = deadlines.find(d => d.date > now) || deadlines[deadlines.length - 1];
+      const diff = Math.max(0, next.date - now);
+      const days  = Math.floor(diff / 86400000);
+      const hours = Math.floor((diff % 86400000) / 3600000);
+      const mins  = Math.floor((diff % 3600000)  / 60000);
+      const secs  = Math.floor((diff % 60000)    / 1000);
+      const pad = n => String(n).padStart(2,'0');
+      document.getElementById('cd-days').textContent  = pad(days);
+      document.getElementById('cd-hours').textContent = pad(hours);
+      document.getElementById('cd-mins').textContent  = pad(mins);
+      document.getElementById('cd-secs').textContent  = pad(secs);
+      document.getElementById('cd-name').textContent  = next.name;
+      const opts = { day:'numeric', month:'long', year:'numeric' };
+      document.getElementById('cd-date').textContent  = 'Deadline: ' + next.date.toLocaleDateString('en-IN', opts);
+    }
+    updateClock();
+    setInterval(updateClock, 1000);
+
+    // ── 5. GSAP Animations ────────────────────────────────
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Hero SplitText word reveal
+    gsap.fromTo('.hero-headline .word-inner',
+      { y: '110%', opacity: 0 },
+      { y: '0%', opacity: 1, duration: 1.1, ease: 'elastic.out(1.1,0.7)', stagger: 0.12, delay: 0.2 }
+    );
+
+    // Hero sub and CTA fade in
+    gsap.fromTo('.hero-sub',
+      { opacity: 0, y: 24 },
+      { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out', delay: 0.75 }
+    );
+    gsap.fromTo('.hero-actions',
+      { opacity: 0, y: 24 },
+      { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out', delay: 0.95 }
+    );
+    gsap.fromTo('.hero-stats',
+      { opacity: 0, y: 30 },
+      { opacity: 1, y: 0, duration: 1, ease: 'power3.out', delay: 1.1 }
+    );
+
+    // Counter animation for stats
+    document.querySelectorAll('[data-count]').forEach(el => {
+      const target = parseInt(el.getAttribute('data-count'));
+      const suffix = el.innerHTML.replace(/[0-9]/g, '').replace('0','');
+      gsap.to({ val: 0 }, {
+        val: target, duration: 2.5, ease: 'power2.out', delay: 1.3,
+        onUpdate: function() { el.innerHTML = Math.floor(this.targets()[0].val) + suffix; }
+      });
+    });
+
+    // Scroll reveals
+    gsap.utils.toArray('.reveal').forEach(el => {
+      gsap.fromTo(el,
+        { opacity: 0, y: 40 },
+        { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out',
+          scrollTrigger: { trigger: el, start: 'top 85%', once: true }
+        }
+      );
+    });
+
+    // Stacking cards
+    gsap.utils.toArray('.stack-card').forEach((card, i) => {
+      gsap.fromTo(card,
+        { opacity: 0, y: 60, scale: 0.96 },
+        { opacity: 1, y: 0, scale: 1, duration: 0.7, ease: 'power3.out',
+          scrollTrigger: { trigger: card, start: 'top 80%', once: true }
+        }
+      );
+    });
+
+    // Magnetic button effect
+    const magBtn = document.getElementById('magnetic-cta');
+    if (magBtn) {
+      magBtn.addEventListener('mousemove', e => {
+        const rect = magBtn.getBoundingClientRect();
+        const cx = rect.left + rect.width / 2;
+        const cy = rect.top  + rect.height / 2;
+        const dx = e.clientX - cx;
+        const dy = e.clientY - cy;
+        gsap.to(magBtn.querySelector('a'), { x: dx * 0.35, y: dy * 0.35, duration: 0.4, ease: 'power2.out' });
+      });
+      magBtn.addEventListener('mouseleave', () => {
+        gsap.to(magBtn.querySelector('a'), { x: 0, y: 0, duration: 0.6, ease: 'elastic.out(1,0.5)' });
+      });
+    }
+
+    // Bento cards staggered entrance
+    gsap.fromTo('.bento-card',
+      { opacity: 0, y: 50, scale: 0.97 },
+      { opacity: 1, y: 0, scale: 1, duration: 0.7, ease: 'power3.out', stagger: 0.1,
+        scrollTrigger: { trigger: '.bento-grid', start: 'top 80%', once: true }
+      }
+    );
+
+    // Why cards stagger
+    gsap.fromTo('.why-card',
+      { opacity: 0, y: 40 },
+      { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out', stagger: 0.08,
+        scrollTrigger: { trigger: '.why-grid', start: 'top 80%', once: true }
+      }
+    );
+
+    // Founder cards
+    gsap.fromTo('.founder-avatar-card, .founder-content',
+      { opacity: 0, y: 40 },
+      { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', stagger: 0.15,
+        scrollTrigger: { trigger: '.founder-grid', start: 'top 80%', once: true }
+      }
+    );
+
+    // Nav shrink on scroll
+    ScrollTrigger.create({
+      start: 'top -60',
+      onUpdate: self => {
+        document.getElementById('nav').style.background = self.direction === 1
+          ? 'rgba(8,15,30,0.95)' : 'rgba(8,15,30,0.7)';
+      }
+    });
+
+  })();
+  </script>
+</body>
+</html>
