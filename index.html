@@ -392,13 +392,19 @@
       line-height: 0.96;
       letter-spacing: -0.04em;
       margin-bottom: 24px;
-      background: linear-gradient(180deg, #ffffff 0%, #eef7ff 44%, rgba(255,255,255,0.78) 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      background-clip: text;
+      color: #f8fbff;
       position: relative; z-index: 1;
     }
     .hero-headline .word { display: inline-block; overflow: hidden; margin-right: 0.2em; }
-    .hero-headline .word-inner { display: block; transform: translateY(110%); }
+    .hero-headline .word-inner {
+      display: block;
+      transform: translateY(110%);
+      background: linear-gradient(180deg, #ffffff 0%, #eef7ff 44%, rgba(255,255,255,0.78) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+    }
     .hero-sub {
       max-width: 620px; margin: 0 0 34px;
       font-size: clamp(1rem, 1.6vw, 1.16rem);
