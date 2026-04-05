@@ -211,6 +211,9 @@
     .hero-visual {
       position: relative;
       min-height: 620px;
+      width: min(520px, 100%);
+      margin-left: auto;
+      padding: 24px 28px 96px;
       pointer-events: none;
       z-index: 1;
       display: flex; align-items: center; justify-content: center;
@@ -237,9 +240,9 @@
     }
     .hero-dashboard {
       position: absolute;
-      right: 0;
-      bottom: 36px;
-      width: min(360px, 82%);
+      right: -8px;
+      bottom: 12px;
+      width: min(300px, 64%);
       padding: 22px;
       border-radius: 28px;
       background: linear-gradient(180deg, rgba(17,24,39,0.92), rgba(15,23,42,0.72));
@@ -296,9 +299,9 @@
     }
     .hero-mini-card {
       position: absolute;
-      left: 8px;
-      top: 90px;
-      width: min(250px, 58%);
+      left: -10px;
+      top: 42px;
+      width: min(220px, 46%);
       padding: 18px 20px;
       border-radius: 22px;
       background: rgba(8,15,30,0.72);
@@ -318,7 +321,7 @@
     .hero-mini-copy { font-size: 13px; line-height: 1.6; color: var(--titanium-muted); }
     .hero-portrait-card {
       position: relative;
-      width: min(440px, 100%);
+      width: min(390px, 78%);
       min-height: 560px;
       border-radius: 34px;
       overflow: hidden;
@@ -451,8 +454,8 @@
       .hero-stats { justify-content: center; }
       .hero-dashboard,
       .hero-mini-card { display: none; }
-      .hero-visual { min-height: 520px; margin-top: 18px; }
-      .hero-portrait-card { min-height: 500px; }
+      .hero-visual { min-height: 520px; width: 100%; margin-top: 18px; padding: 0; }
+      .hero-portrait-card { width: min(440px, 100%); min-height: 500px; }
       .hero-orbit {
         width: min(110vw, 560px);
         height: min(110vw, 560px);
