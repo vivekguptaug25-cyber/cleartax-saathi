@@ -438,7 +438,7 @@
     .hq-address { font-size: 13px; color: var(--titanium-muted); margin-top: 4px; line-height: 1.5; }
 
     @media(max-width:768px) {
-      #founder { padding: 80px 20px; }
+      #about-us { padding: 80px 20px; }
       .founder-grid { grid-template-columns: 1fr; }
       .founder-content { padding: 32px 28px; }
     }
@@ -461,6 +461,53 @@
     }
 
     /* ─── CTA BANNER ─────────────────────────────────────── */
+    #blogs { padding: 120px 48px; }
+    .blog-grid {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+    }
+    .blog-card { padding: 32px 28px; border-radius: 22px; min-height: 280px; display: flex; flex-direction: column; }
+    .blog-meta {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em;
+      color: var(--titanium-dim); margin-bottom: 18px;
+    }
+    .blog-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--emerald); }
+    .blog-title { font-size: 1.35rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1.2; margin-bottom: 14px; }
+    .blog-excerpt { color: var(--titanium-muted); font-size: 0.95rem; line-height: 1.75; margin-bottom: 22px; }
+    .blog-link { margin-top: auto; color: var(--emerald); font-size: 0.95rem; font-weight: 700; }
+
+    @media(max-width:900px) { .blog-grid { grid-template-columns: 1fr 1fr; } }
+    @media(max-width:600px) {
+      #blogs { padding: 80px 20px; }
+      .blog-grid { grid-template-columns: 1fr; }
+    }
+
+    #contact { padding: 120px 48px 20px; }
+    .contact-grid {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 18px;
+    }
+    .contact-card { padding: 36px 32px; border-radius: 24px; }
+    .contact-stack { display: grid; gap: 16px; }
+    .contact-item {
+      padding: 18px 20px; border-radius: 16px;
+      background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+    }
+    .contact-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--titanium-dim); font-weight: 700; margin-bottom: 6px; }
+    .contact-value { font-size: 1rem; color: var(--titanium); line-height: 1.6; }
+    .contact-value a { color: inherit; }
+    .contact-note { color: var(--titanium-muted); font-size: 0.95rem; line-height: 1.75; margin: 16px 0 24px; }
+    .contact-actions-row { display: flex; flex-wrap: wrap; gap: 14px; }
+    .contact-side-title { font-size: 1.35rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 12px; }
+    .contact-side-copy { color: var(--titanium-muted); font-size: 0.95rem; line-height: 1.75; margin-bottom: 20px; }
+
+    @media(max-width:900px) { .contact-grid { grid-template-columns: 1fr; } }
+    @media(max-width:600px) {
+      #contact { padding: 80px 20px 20px; }
+      .contact-card { padding: 28px 24px; }
+    }
+
     #cta { padding: 80px 48px 100px; }
     .cta-card {
       max-width: 900px; margin: 0 auto;
@@ -556,10 +603,12 @@
       <span class="nav-logo-text">Cleartax <span>Saathi</span></span>
     </div>
     <ul class="nav-links">
+      <li><a href="#hero">Home</a></li>
       <li><a href="#services">Services</a></li>
       <li><a href="#compliance">Compliance</a></li>
-      <li><a href="#founder">About</a></li>
-      <li><a href="#why">Why Us</a></li>
+      <li><a href="#blogs">Blogs</a></li>
+      <li><a href="#contact">Contact Us</a></li>
+      <li><a href="#about-us">About Us</a></li>
     </ul>
     <a href="https://wa.me/918882453238" class="nav-cta">Get Started →</a>
   </nav>
@@ -781,7 +830,7 @@
   </section>
 
   <!-- ═══ FOUNDER ════════════════════════════════════════ -->
-  <section id="founder" style="padding: 120px 48px;">
+  <section id="about-us" style="padding: 120px 48px;">
     <div class="section-inner">
       <div class="founder-grid">
         <div class="glass-card founder-avatar-card reveal">
@@ -874,6 +923,82 @@
   </section>
 
   <!-- ═══ CTA BANNER ════════════════════════════════════ -->
+  <section id="blogs" style="padding: 120px 48px;">
+    <div class="section-inner">
+      <div class="sec-header reveal" style="margin:0 auto 64px;text-align:center;max-width:680px;">
+        <div class="tag" style="margin: 0 auto 16px;">Latest Insights</div>
+        <h2>Practical tax and compliance <span class="em">guides for founders.</span></h2>
+        <p>Use these featured reading blocks as your blog section until full articles are added. They give visitors immediate educational value and support SEO-friendly expansion later.</p>
+      </div>
+      <div class="blog-grid">
+        <article class="glass-card blog-card reveal">
+          <div class="blog-meta"><span class="blog-dot"></span>GST Guide</div>
+          <h3 class="blog-title">GST registration checklist for new businesses in India</h3>
+          <p class="blog-excerpt">A simple walkthrough of documents, turnover thresholds, and the common registration mistakes that delay onboarding for startups and service firms.</p>
+          <a href="https://wa.me/918882453238?text=Hi%20Amit%2C%20I%20want%20help%20with%20GST%20registration." class="blog-link">Ask about GST registration</a>
+        </article>
+        <article class="glass-card blog-card reveal">
+          <div class="blog-meta"><span class="blog-dot"></span>Income Tax</div>
+          <h3 class="blog-title">How to prepare your books before ITR filing season starts</h3>
+          <p class="blog-excerpt">Learn what records to organize early, how to separate personal and business expenses, and what your accountant needs before return filing begins.</p>
+          <a href="https://wa.me/918882453238?text=Hi%20Amit%2C%20I%20want%20help%20with%20ITR%20filing." class="blog-link">Discuss your ITR filing</a>
+        </article>
+        <article class="glass-card blog-card reveal">
+          <div class="blog-meta"><span class="blog-dot"></span>Compliance</div>
+          <h3 class="blog-title">Monthly compliance calendar every founder should follow</h3>
+          <p class="blog-excerpt">A founder-friendly view of recurring GST, TDS, ROC, and bookkeeping deadlines so nothing slips and penalties never become a surprise.</p>
+          <a href="https://wa.me/918882453238?text=Hi%20Amit%2C%20I%20need%20a%20monthly%20compliance%20plan." class="blog-link">Get a compliance plan</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" style="padding: 120px 48px 20px;">
+    <div class="section-inner">
+      <div class="sec-header reveal" style="margin:0 auto 64px;text-align:center;max-width:640px;">
+        <div class="tag" style="margin: 0 auto 16px;">Contact Us</div>
+        <h2>Speak to a tax advisor who values <span class="em">clarity and speed.</span></h2>
+        <p>Whether you need filing support, a compliance review, or business setup guidance, Cleartax Saathi is available on call, WhatsApp, and in person in New Delhi.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="glass-card contact-card reveal">
+          <div class="contact-stack">
+            <div class="contact-item">
+              <div class="contact-label">Phone</div>
+              <div class="contact-value"><a href="tel:+918882453238">+91 88824 53238</a></div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-label">WhatsApp</div>
+              <div class="contact-value"><a href="https://wa.me/918882453238">Start a direct chat with Amit Goyal</a></div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-label">Office Address</div>
+              <div class="contact-value">B33 Sitapuri Extension Part 1, Street No. 4, Dabri Moad, New Delhi 110045</div>
+            </div>
+          </div>
+          <p class="contact-note">Fastest response usually comes through WhatsApp for document sharing, appointment scheduling, and quick tax questions.</p>
+          <div class="contact-actions-row">
+            <a href="https://wa.me/918882453238?text=Hi%20Amit%2C%20I%20want%20to%20book%20a%20consultation." class="btn-whatsapp">WhatsApp Now</a>
+            <a href="tel:+918882453238" class="btn-secondary">Call Now</a>
+          </div>
+        </div>
+        <div class="glass-card contact-card reveal">
+          <div class="tag" style="margin-bottom:18px;">Office Hours</div>
+          <div class="contact-side-title">Visit the New Delhi office or schedule a remote consultation.</div>
+          <p class="contact-side-copy">We support founders, salaried professionals, and growing businesses with both in-person and digital workflows. Share your requirement and we will guide you on the next best step.</p>
+          <div class="contact-item" style="margin-bottom:12px;">
+            <div class="contact-label">Working Days</div>
+            <div class="contact-value">Monday to Saturday</div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-label">Consultation Window</div>
+            <div class="contact-value">10:00 AM to 7:00 PM</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="cta" style="padding: 80px 48px 100px;">
     <div class="cta-card glass-card reveal">
       <div class="tag" style="margin: 0 auto 32px; display:inline-flex;">New Delhi's Most Trusted Tax Advisors</div>
@@ -921,10 +1046,10 @@
       <div>
         <div class="footer-col-title">Company</div>
         <ul class="footer-links">
-          <li><a href="#founder">About Amit Goyal</a></li>
+          <li><a href="#about-us">About Us</a></li>
           <li><a href="#why">Why Cleartax Saathi</a></li>
           <li><a href="#compliance">Compliance Calendar</a></li>
-          <li><a href="#process">Our Process</a></li>
+          <li><a href="#blogs">Blogs</a></li>
         </ul>
       </div>
 
@@ -933,6 +1058,7 @@
         <ul class="footer-links">
           <li><a href="https://wa.me/918882453238">WhatsApp: +91 88824 53238</a></li>
           <li><a href="tel:+918882453238">Call: +91 88824 53238</a></li>
+          <li><a href="#contact">Book a consultation</a></li>
           <li><a href="#">B33 Sitapuri Extension Part 1</a></li>
           <li><a href="#">Street No. 4, Dabri Moad</a></li>
           <li><a href="#">New Delhi 110045</a></li>
