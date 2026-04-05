@@ -188,12 +188,6 @@
       position: relative;
       z-index: 1;
     }
-    #hero > .hero-tag,
-    #hero > .hero-headline,
-    #hero > .hero-sub,
-    #hero > .hero-actions,
-    #hero > .hero-stats,
-    #hero > .hero-visual { display: none; }
     .hero-glow {
       position: absolute; width: 700px; height: 700px; border-radius: 50%;
       background: radial-gradient(circle, rgba(16,185,129,0.12) 0%, transparent 65%);
@@ -309,6 +303,7 @@
       box-shadow: 0 16px 60px rgba(0,0,0,0.22);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
+      display: none;
     }
     .hero-mini-label {
       font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em;
@@ -855,7 +850,7 @@
   </nav>
 
   <!-- ═══ HERO ══════════════════════════════════════════ -->
-  <section id="hero">
+    <section id="hero">
     <div class="hero-glow"></div>
     <div class="hero-grid-lines"></div>
     <div class="hero-shell">
@@ -900,18 +895,13 @@
             <div class="stat-label">Compliance Rate</div>
           </div>
           <div class="stat-item">
-            <div class="stat-num"><span>â‚¹</span>200<span>Cr+</span></div>
-            <div class="stat-label">Tax Filed Successfully</div>
+            <div class="stat-num">200<span>Cr+</span></div>
+            <div class="stat-label">Taxes Managed</div>
           </div>
         </div>
       </div>
       <div class="hero-visual reveal" aria-hidden="true">
         <div class="hero-orbit"></div>
-        <div class="hero-mini-card">
-          <div class="hero-mini-label">Active Mandates</div>
-          <div class="hero-mini-value">500+</div>
-          <div class="hero-mini-copy">GST, ITR, ROC, and audit support delivered with deadline-first execution.</div>
-        </div>
         <div class="hero-portrait-card">
           <svg class="hero-portrait-svg" viewBox="0 0 520 680" xmlns="http://www.w3.org/2000/svg" role="presentation">
             <defs>
@@ -974,87 +964,6 @@
             </div>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="hero-visual" aria-hidden="true">
-      <div class="hero-orbit"></div>
-      <div class="hero-mini-card">
-        <div class="hero-mini-label">Active Mandates</div>
-        <div class="hero-mini-value">500+</div>
-        <div class="hero-mini-copy">GST, ITR, ROC, and audit support delivered with deadline-first execution.</div>
-      </div>
-      <div class="hero-dashboard glass-card">
-        <div class="hero-dash-top">
-          <div class="hero-dash-title">Compliance Dashboard</div>
-          <div class="hero-dash-chip">On Track</div>
-        </div>
-        <div class="hero-dash-chart">
-          <div class="hero-bar" style="height:42%;"></div>
-          <div class="hero-bar" style="height:56%;"></div>
-          <div class="hero-bar" style="height:48%;"></div>
-          <div class="hero-bar" style="height:70%;"></div>
-          <div class="hero-bar" style="height:66%;"></div>
-          <div class="hero-bar" style="height:84%;"></div>
-          <div class="hero-bar" style="height:92%;"></div>
-        </div>
-        <div class="hero-dash-list">
-          <div class="hero-dash-item">
-            <span>GST Filing Cycle</span>
-            <span class="hero-dash-status">Ready</span>
-          </div>
-          <div class="hero-dash-item">
-            <span>ITR Documentation</span>
-            <span class="hero-dash-status">Updated</span>
-          </div>
-          <div class="hero-dash-item">
-            <span>ROC Calendar</span>
-            <span class="hero-dash-status">Synced</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="hero-tag tag reveal">New Delhi's Premier Tax Advisory</div>
-
-    <h1 class="hero-headline" id="hero-headline">
-      <span class="word"><span class="word-inner">Redefining</span></span>
-      <span class="word"><span class="word-inner">Financial</span></span>
-      <span class="word"><span class="word-inner">Integrity.</span></span>
-    </h1>
-
-    <p class="hero-sub reveal">
-      Premium Tax, Audit, and Compliance solutions for India's next generation of enterprises. Expert-led, tech-driven.
-    </p>
-
-    <div class="hero-actions reveal">
-      <div class="magnetic-btn-wrap" id="magnetic-cta">
-        <a href="https://wa.me/918882453238" class="btn-primary">
-          Book Free Consultation
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-      </div>
-      <a href="#services" class="btn-secondary">
-        Explore Services
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12l4 4 4-4"/></svg>
-      </a>
-    </div>
-
-    <div class="hero-stats reveal">
-      <div class="stat-item">
-        <div class="stat-num" data-count="500">0<span>+</span></div>
-        <div class="stat-label">Clients Served</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num" data-count="12">0<span>+</span></div>
-        <div class="stat-label">Years of Expertise</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num" data-count="98">0<span>%</span></div>
-        <div class="stat-label">Compliance Rate</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num"><span>₹</span>200<span>Cr+</span></div>
-        <div class="stat-label">Tax Filed Successfully</div>
       </div>
     </div>
   </section>
@@ -1641,3 +1550,4 @@
   </script>
 </body>
 </html>
+
