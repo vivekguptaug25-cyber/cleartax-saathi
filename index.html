@@ -353,6 +353,16 @@
       z-index: 1;
       opacity: 0.98;
     }
+    .hero-portrait-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center bottom;
+      position: relative;
+      z-index: 1;
+      padding-top: 26px;
+      filter: saturate(0.96) contrast(1.02);
+    }
     .hero-portrait-note {
       position: absolute;
       left: 22px;
@@ -724,6 +734,22 @@
     .founder-avatar-card {
       padding: 48px 32px; border-radius: 28px; text-align: center;
     }
+    .founder-photo-wrap {
+      width: 100%;
+      height: 380px;
+      border-radius: 22px;
+      overflow: hidden;
+      margin-bottom: 24px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+    }
+    .founder-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
     .founder-initials {
       width: 100px; height: 100px; border-radius: 50%; margin: 0 auto 24px;
       background: linear-gradient(135deg, var(--emerald), #0D5D61);
@@ -762,6 +788,7 @@
     @media(max-width:768px) {
       #about-us { padding: 80px 20px; }
       .founder-grid { grid-template-columns: 1fr; }
+      .founder-photo-wrap { height: 300px; }
       .founder-content { padding: 32px 28px; }
     }
 
@@ -989,33 +1016,11 @@
       <div class="hero-visual reveal" aria-hidden="true">
         <div class="hero-orbit"></div>
         <div class="hero-portrait-card">
-          <svg class="hero-portrait-svg" viewBox="0 0 520 680" xmlns="http://www.w3.org/2000/svg" role="presentation">
-            <defs>
-              <linearGradient id="heroBgGlowNew" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#1ce4a0" stop-opacity="0.34"/>
-                <stop offset="55%" stop-color="#0f172a" stop-opacity="0"/>
-                <stop offset="100%" stop-color="#f5c36a" stop-opacity="0.22"/>
-              </linearGradient>
-              <linearGradient id="jacketGradNew" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#13233f"/>
-                <stop offset="100%" stop-color="#09101d"/>
-              </linearGradient>
-              <linearGradient id="shirtGradNew" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stop-color="#eef4fb"/>
-                <stop offset="100%" stop-color="#d2dde9"/>
-              </linearGradient>
-            </defs>
-            <rect width="520" height="680" fill="url(#heroBgGlowNew)"/>
-            <circle cx="278" cy="220" r="132" fill="rgba(15,140,141,0.12)"/>
-            <ellipse cx="284" cy="188" rx="76" ry="92" fill="#d8a47d"/>
-            <path d="M214 176c8-70 123-90 161-15 9 18 9 54 2 72-7-17-18-28-37-35-31 19-72 26-116 23-7-16-13-29-10-45z" fill="#101726"/>
-            <path d="M232 268c17 24 38 36 60 36 23 0 44-12 61-36v48c0 18 16 34 37 41 48 17 89 67 103 153H120c17-89 58-136 102-153 24-9 38-23 38-41v-48z" fill="url(#shirtGradNew)"/>
-            <path d="M198 356c26-24 55-38 94-38 40 0 69 14 95 38l40 154H159l39-154z" fill="url(#jacketGradNew)"/>
-            <path d="M262 319l22 0 18 26-29 42-29-42 18-26z" fill="#0f172a"/>
-            <path d="M273 342l22 163h-44l22-163z" fill="#122035"/>
-            <rect x="138" y="510" width="245" height="6" rx="3" fill="rgba(255,255,255,0.08)"/>
-            <rect x="162" y="530" width="198" height="6" rx="3" fill="rgba(255,255,255,0.08)"/>
-          </svg>
+          <img
+            src="CA%20Amit/CA%20amit%20Photo.jpeg"
+            alt="CA Amit Goyal portrait"
+            class="hero-portrait-photo"
+          />
           <div class="hero-portrait-note">
             <div class="hero-portrait-name">Amit Goyal</div>
             <div class="hero-portrait-role">Founder and principal advisor bringing direct CA-led guidance to every compliance decision.</div>
@@ -1225,7 +1230,13 @@
     <div class="section-inner">
       <div class="founder-grid">
         <div class="glass-card founder-avatar-card reveal">
-          <div class="founder-initials">AG</div>
+          <div class="founder-photo-wrap">
+            <img
+              src="CA%20Amit/CA%20amit%20photo%20with%20logo%20on%20backgroud%20wall.jpeg"
+              alt="Amit Goyal at office wall branding"
+              class="founder-photo"
+            />
+          </div>
           <div class="founder-name">Amit Goyal</div>
           <div class="founder-title">Founder & Principal Advisor</div>
           <div class="founder-creds">
