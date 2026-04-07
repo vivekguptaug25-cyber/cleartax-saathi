@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blogs | Cleartax Saathi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;0,900&display=swap" rel="stylesheet" />
+  <style>
+    :root { --bg: #f6f9fc; --surface: rgba(255,255,255,0.88); --text: #14263A; --muted: #5F7085; --line: rgba(20,38,58,0.10); --brand: #0F8C8D; --brand-deep: #0B6769; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter Tight', system-ui, sans-serif; background: linear-gradient(180deg, #fbfdff 0%, var(--bg) 100%); color: var(--text); }
+    a { color: inherit; text-decoration: none; }
+    nav { position: sticky; top: 0; z-index: 20; display: flex; justify-content: space-between; align-items: center; padding: 20px 48px; background: rgba(255,255,255,0.88); border-bottom: 1px solid var(--line); backdrop-filter: blur(16px); }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; }
+    .brand-mark { width: 38px; height: 38px; border-radius: 12px; display:flex; align-items:center; justify-content:center; background: #ffffff; color:#fff; border: 1px solid rgba(20,38,58,0.08); overflow: hidden; }
+    .brand span span { color: var(--brand); }
+    .brand-mark img { width: 100%; height: 100%; object-fit: contain; border-radius: inherit; display: block; padding: 3px; background: #fff; }
+    .nav-links { display:flex; gap:28px; list-style:none; color: var(--muted); font-weight:600; }
+    .nav-cta { padding: 12px 20px; border-radius: 999px; background: linear-gradient(135deg, var(--brand), #127476); color:#fff; font-weight:700; box-shadow: 0 16px 28px rgba(15,140,141,0.18); }
+    .hero { padding: 110px 48px 54px; background: radial-gradient(circle at 14% 20%, rgba(15,140,141,0.10), transparent 24%), radial-gradient(circle at 86% 22%, rgba(31,78,121,0.10), transparent 20%), linear-gradient(135deg, #f9fcff 0%, #eef5fb 100%); }
+    .hero-inner, .content, footer { max-width: 1180px; margin: 0 auto; }
+    .eyebrow { display:inline-flex; padding:8px 14px; border-radius:999px; background:rgba(15,140,141,0.08); color: var(--brand); border:1px solid rgba(15,140,141,0.18); font-size:12px; letter-spacing:0.08em; text-transform:uppercase; font-weight:800; }
+    h1 { margin-top: 18px; max-width: 760px; font-size: clamp(2.8rem, 6vw, 5.4rem); line-height: 0.95; letter-spacing: -0.05em; }
+    .hero p { margin-top: 20px; max-width: 700px; color: var(--muted); font-size: 1.06rem; line-height: 1.8; }
+    .content { padding: 28px 48px 96px; }
+    .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+    .card { background: var(--surface); border:1px solid var(--line); border-radius: 28px; padding: 28px; box-shadow: 0 24px 50px rgba(20,38,58,0.08); }
+    .meta { color: var(--brand); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 800; }
+    .card h2 { margin-top: 18px; font-size: 1.5rem; line-height: 1.2; letter-spacing: -0.03em; }
+    .card p { margin-top: 14px; color: var(--muted); line-height: 1.8; }
+    .link { margin-top: 22px; display:inline-flex; color: var(--brand); font-weight: 800; }
+    .contact-strip { margin-top: 28px; padding: 24px 28px; border-radius: 24px; background: linear-gradient(135deg, #ffffff, #eef5fa); border: 1px solid var(--line); display:flex; justify-content:space-between; align-items:center; gap: 18px; }
+    .contact-strip p { color: var(--muted); max-width: 640px; line-height: 1.7; }
+    footer { padding: 0 48px 42px; color: var(--muted); font-size: 14px; }
+    .footer-box { border-top:1px solid var(--line); padding-top: 26px; display:flex; justify-content:space-between; gap:16px; }
+    @media (max-width: 900px) { nav, .hero, .content, footer { padding-left: 20px; padding-right: 20px; } .nav-links { display:none; } .grid { grid-template-columns: 1fr; } .contact-strip, .footer-box { flex-direction: column; align-items: flex-start; } }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html" class="brand"><div class="brand-mark"><img src="CA%20Amit/LOGO.jpeg" alt="Cleartax Saathi logo" /></div><span>Cleartax <span>Saathi</span></span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="index.html#compliance">Compliance</a></li>
+      <li><a href="blogs.html">Blogs</a></li>
+      <li><a href="index.html#contact">Contact Us</a></li>
+      <li><a href="index.html#about-us">About Us</a></li>
+    </ul>
+    <a href="https://wa.me/918882453238?text=Hi%20Amit%2C%20I%20want%20to%20discuss%20my%20tax%20or%20compliance%20requirement." class="nav-cta">Chat on WhatsApp</a>
+  </nav>
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">Knowledge Hub</div>
+      <h1>Useful tax and compliance articles, written for real business decisions.</h1>
+      <p>Use this dedicated blog page as the reading space while the homepage stays focused on trust, services, and conversion. Later in WordPress, this maps naturally to the blog archive and individual post pages.</p>
+    </div>
+  </section>
+  <main class="content">
+    <div class="grid">
+      <article class="card"><div class="meta">GST Guide</div><h2>GST registration checklist for new businesses in India</h2><p>A founder-friendly guide to threshold limits, documentation, business category choices, and the early mistakes that slow approval.</p><a class="link" href="blog-gst-registration-checklist.html">Read article →</a></article>
+      <article class="card"><div class="meta">Income Tax</div><h2>How to prepare your books before ITR filing season starts</h2><p>Understand what to organize in advance so return filing becomes cleaner, faster, and easier to review with your CA.</p><a class="link" href="blog-prepare-books-itr.html">Read article →</a></article>
+      <article class="card"><div class="meta">Compliance</div><h2>Monthly compliance calendar every founder should follow</h2><p>A simple monthly operational routine for GST, TDS, ROC, payroll, and accounting checkpoints.</p><a class="link" href="blog-monthly-compliance-calendar.html">Read article →</a></article>
+    </div>
+    <div class="contact-strip">
+      <div><h3 style="font-size:1.35rem; letter-spacing:-0.03em;">Need help on a specific issue?</h3><p>Articles build confidence, but direct advice prevents mistakes. Reach out for one-on-one guidance on GST, ITR, ROC, and day-to-day compliance.</p></div>
+      <a href="https://wa.me/918882453238?text=Hi%20Amit%2C%20I%20read%20your%20blog%20and%20want%20advice%20on%20my%20case." class="nav-cta">Discuss Your Case</a>
+    </div>
+  </main>
+  <footer><div class="footer-box"><div>&copy; 2026 Cleartax Saathi. All rights reserved.</div><div>New Delhi based tax advisory for founders, professionals, and growing businesses.</div></div></footer>
+</body>
+</html>

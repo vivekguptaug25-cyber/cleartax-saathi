@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cleartax Saathi — Premium Tax & Business Consultancy, New Delhi</title>
+  <title>Cleartax Saathi | Premium Tax & Business Consultancy, New Delhi</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;0,900;1,300&display=swap" rel="stylesheet" />
@@ -15,20 +15,20 @@
   <style>
     /* ─── Design Tokens ─────────────────────────────────── */
     :root {
-      --midnight:   #0B1625;
-      --navy-dark:  #09121F;
-      --navy-card:  #101C2B;
+      --midnight:   #F5F8FC;
+      --navy-dark:  #FFFFFF;
+      --navy-card:  #EAF0F6;
       --emerald:    #0F8C8D;
       --emerald-dim:#0B6769;
       --emerald-glow: rgba(15,140,141,0.12);
       --emerald-glow-bright: rgba(15,140,141,0.22);
-      --titanium:   #F8FAFC;
-      --titanium-muted: #94A3B8;
-      --titanium-dim:   #64748B;
-      --border:     rgba(255,255,255,0.07);
+      --titanium:   #14263A;
+      --titanium-muted: #5F7085;
+      --titanium-dim:   #7D8EA3;
+      --border:     rgba(20,38,58,0.10);
       --border-em:  rgba(15,140,141,0.2);
-      --card-bg:    rgba(16,28,43,0.74);
-      --glass-bg:   rgba(9,18,31,0.64);
+      --card-bg:    rgba(255,255,255,0.88);
+      --glass-bg:   rgba(255,255,255,0.72);
     }
 
     /* ─── Reset & Base ──────────────────────────────────── */
@@ -67,7 +67,7 @@
       content: '';
       position: fixed; inset: 0; z-index: 0; pointer-events: none;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-      opacity: 0.4;
+      opacity: 0.18;
     }
 
     /* ─── Section Layout ─────────────────────────────────── */
@@ -84,7 +84,9 @@
       font-size: 12px; font-weight: 600; letter-spacing: 0.08em;
       text-transform: uppercase; color: var(--emerald);
     }
-    .tag::before { content: ''; display: block; width: 6px; height: 6px; border-radius: 50%; background: var(--emerald); animation: pulse 2s infinite; }
+    .tag::before { content: ''; display: block;
+      padding: 3px;
+      background: #fff; width: 6px; height: 6px; border-radius: 50%; background: var(--emerald); animation: pulse 2s infinite; }
     @keyframes pulse { 0%,100%{opacity:1}50%{opacity:0.3} }
 
     /* ─── Glass Card ─────────────────────────────────────── */
@@ -111,7 +113,7 @@
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       padding: 20px 48px;
       display: flex; align-items: center; justify-content: space-between;
-      background: rgba(8,15,30,0.7);
+      background: rgba(255,255,255,0.82);
       backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
       transition: background 0.3s;
@@ -127,8 +129,38 @@
     }
     .nav-logo-text { font-size: 17px; font-weight: 700; letter-spacing: -0.02em; }
     .nav-logo-text span { color: var(--emerald); }
+
+    .nav-logo-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: inherit;
+      display: block;
+    }
+    .contact-photo-card {
+      margin-top: 22px;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(20,38,58,0.08);
+      background: rgba(244,248,252,0.95);
+      box-shadow: 0 18px 40px rgba(20,38,58,0.08);
+    }
+    .contact-photo-card img {
+      width: 100%;
+      height: 240px;
+      object-fit: contain;
+      display: block;
+    }
+    .contact-photo-caption {
+      padding: 14px 16px;
+      font-size: 13px;
+      line-height: 1.6;
+      color: #607285;
+      background: rgba(255,255,255,0.82);
+    }
+
     .nav-links { display: flex; gap: 36px; list-style: none; }
-    .nav-links a { font-size: 14px; color: var(--titanium-muted); font-weight: 500; transition: color 0.2s; }
+    .nav-links a { font-size: 14px; color: var(--titanium-muted); font-weight: 600; transition: color 0.2s; }
     .nav-links a:hover { color: var(--titanium); }
     .nav-cta {
       padding: 10px 22px; border-radius: 99px;
@@ -746,7 +778,7 @@
     .founder-photo {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
       object-position: center;
       display: block;
     }
@@ -937,6 +969,332 @@
       margin: 0 0 80px; opacity: 0.35;
       max-width: 1200px; margin-left: auto; margin-right: auto;
     }
+  
+
+    /* Light Theme Polish Overrides */
+    html { background: #f5f8fc; }
+    body {
+      background:
+        radial-gradient(circle at top left, rgba(15,140,141,0.08), transparent 26%),
+        radial-gradient(circle at top right, rgba(31,78,121,0.08), transparent 24%),
+        linear-gradient(180deg, #f8fbff 0%, #f4f8fc 100%);
+      color: var(--titanium);
+      cursor: auto;
+    }
+    #cursor-dot,
+    #cursor-ring { display: none; }
+    .glass-card {
+      background: rgba(255,255,255,0.88);
+      border: 1px solid rgba(20,38,58,0.09);
+      box-shadow: 0 22px 60px rgba(30, 60, 90, 0.08);
+    }
+    nav {
+      background: rgba(255,255,255,0.9);
+      box-shadow: 0 8px 30px rgba(26, 44, 67, 0.06);
+    }
+    .nav-links a { color: #58708b; }
+    .nav-links a:hover,
+    .footer-links a:hover { color: #14263A; }
+    .nav-cta {
+      color: #ffffff;
+      background: linear-gradient(135deg, #0f8c8d, #127476);
+      box-shadow: 0 18px 30px rgba(15,140,141,0.18);
+    }
+    .nav-cta:hover,
+    .btn-primary:hover,
+    .btn-whatsapp:hover { box-shadow: 0 18px 34px rgba(15,140,141,0.22); }
+    #hero {
+      background:
+        radial-gradient(circle at 14% 18%, rgba(15,140,141,0.10), transparent 26%),
+        radial-gradient(circle at 88% 20%, rgba(76,132,196,0.10), transparent 22%),
+        linear-gradient(135deg, #f9fcff 0%, #eef5fb 48%, #f5f8fc 100%);
+    }
+    #hero::before {
+      background: radial-gradient(circle, rgba(15,140,141,0.10), rgba(15,140,141,0.015) 62%, transparent 72%);
+      filter: blur(28px);
+    }
+    #hero::after {
+      background: radial-gradient(circle, rgba(31,78,121,0.08), rgba(31,78,121,0.015) 60%, transparent 72%);
+      filter: blur(28px);
+    }
+    .hero-grid-lines {
+      background-image:
+        linear-gradient(rgba(20,38,58,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(20,38,58,0.035) 1px, transparent 1px);
+    }
+    .hero-glow { background: radial-gradient(circle, rgba(15,140,141,0.10) 0%, rgba(15,140,141,0.03) 42%, transparent 68%); }
+    .hero-badge {
+      border-color: rgba(20,38,58,0.08);
+      background: rgba(255,255,255,0.78);
+      color: #51657a;
+      box-shadow: 0 10px 24px rgba(22, 42, 61, 0.05);
+    }
+    .hero-headline { color: #14263A; }
+    .hero-headline .word-inner {
+      background: none;
+      -webkit-background-clip: border-box;
+      background-clip: border-box;
+      -webkit-text-fill-color: #14263A;
+      color: #14263A;
+      text-shadow: 0 6px 20px rgba(255,255,255,0.35);
+    }
+    .hero-sub { color: #5f7085; }
+    .hero-stats { border-top-color: rgba(20,38,58,0.09); }
+    .hero-orbit {
+      border-color: rgba(20,38,58,0.06);
+      box-shadow: inset 0 0 80px rgba(15,140,141,0.04);
+    }
+    .hero-orbit::before { border-color: rgba(15,140,141,0.10); }
+    .hero-orbit::after { border-color: rgba(20,38,58,0.05); }
+    .hero-visual::before {
+      background:
+        linear-gradient(180deg, rgba(15,140,141,0.08), rgba(255,255,255,0.72)),
+        radial-gradient(circle at 50% 20%, rgba(15,140,141,0.10), transparent 36%);
+      border-color: rgba(20,38,58,0.06);
+    }
+    .hero-portrait-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(236,244,250,0.92));
+      border-color: rgba(20,38,58,0.08);
+      box-shadow: 0 28px 60px rgba(18, 38, 58, 0.10);
+    }
+    .hero-portrait-card::after { background: linear-gradient(180deg, transparent, rgba(226,236,245,0.92)); }
+    .hero-portrait-note,
+    .hero-mini-card,
+    .hero-dashboard {
+      background: rgba(255,255,255,0.9);
+      border: 1px solid rgba(20,38,58,0.08);
+      box-shadow: 0 18px 48px rgba(20,38,58,0.10);
+    }
+    .hero-dashboard::before { background: linear-gradient(135deg, rgba(15,140,141,0.10), transparent 42%, transparent 60%, rgba(15,140,141,0.06)); }
+    .hero-dash-item {
+      background: rgba(15,140,141,0.05);
+      border-color: rgba(20,38,58,0.06);
+      color: #51657a;
+    }
+    .hero-dash-title,
+    .hero-portrait-name,
+    .hero-mini-value { color: #14263A; }
+    .hero-portrait-role,
+    .hero-mini-copy,
+    .hero-mini-label { color: #617488; }
+    .marquee-section {
+      background: rgba(255,255,255,0.72);
+      border-top: 1px solid rgba(20,38,58,0.08);
+      border-bottom: 1px solid rgba(20,38,58,0.08);
+    }
+    #services { background: linear-gradient(180deg, rgba(255,255,255,0.68), rgba(239,245,250,0.85)); }
+    #process { background: radial-gradient(circle at 12% 20%, rgba(15,140,141,0.08), transparent 26%), linear-gradient(180deg, #f5f9fc 0%, #edf4fa 100%); }
+    #compliance { background: linear-gradient(180deg, #ffffff 0%, #f4f8fc 100%); }
+    #about-us { background: linear-gradient(180deg, #f7fbff 0%, #eef4f9 100%); }
+    #why { background: linear-gradient(180deg, #ffffff 0%, #f3f7fb 100%); }
+    #blogs { background: linear-gradient(180deg, #f3f8fb 0%, #ffffff 100%); }
+    #contact { background: linear-gradient(180deg, #ffffff 0%, #f5f9fc 100%); }
+    #cta { background: linear-gradient(180deg, #eef5fb 0%, #f9fbfd 100%); }
+    .bento-card:hover,
+    .why-card:hover,
+    .blog-card:hover,
+    .contact-card:hover { box-shadow: 0 24px 50px rgba(20,38,58,0.09); }
+    .stack-card,
+    .clock-card,
+    .clock-info-card,
+    .founder-avatar-card,
+    .founder-content,
+    .why-card,
+    .blog-card,
+    .contact-card,
+    .cta-card { box-shadow: 0 22px 50px rgba(20,38,58,0.08); }
+    .blog-link { color: var(--emerald); font-weight: 700; }
+    footer { background: #f3f7fb; border-top: 1px solid rgba(20,38,58,0.08); }
+    .footer-desc,
+    .footer-bottom,
+    .footer-links a,
+    .footer-col-title { color: #5f7085; }
+    .footer-col-title,
+    .footer-em { color: #14263A; }
+    @media (min-width: 769px) {
+      #hero { background: linear-gradient(90deg, #f9fcff 0%, #f4f9fd 48%, #eef6fb 48%, #eff4f9 100%); }
+    }
+
+
+    /* Light Theme Component Cleanup */
+    nav {
+      border-bottom: 1px solid rgba(20,38,58,0.08);
+    }
+    .nav-logo-text { color: #14263A; }
+    .nav-logo-icon {
+      box-shadow: 0 14px 28px rgba(15,140,141,0.16);
+    }
+    .nav-links {
+      align-items: center;
+    }
+    .nav-links a {
+      position: relative;
+      color: #56697e;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -8px;
+      width: 100%;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--emerald), rgba(15,140,141,0.2));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.24s ease;
+    }
+    .nav-links a:hover::after { transform: scaleX(1); }
+    .hero-shell { align-items: center; }
+    .hero-copy { max-width: 620px; }
+    .hero-stats { gap: 28px; }
+    .stat-item {
+      min-width: 110px;
+      padding: 10px 0;
+    }
+    .bento-card,
+    .why-card,
+    .blog-card,
+    .contact-card,
+    .founder-avatar-card,
+    .founder-content,
+    .clock-info-card,
+    .clock-card,
+    .cta-card,
+    .stack-card {
+      background: rgba(255,255,255,0.92);
+      border: 1px solid rgba(20,38,58,0.08);
+    }
+    .bento-card:hover,
+    .why-card:hover,
+    .blog-card:hover,
+    .contact-card:hover,
+    .stack-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 28px 52px rgba(20,38,58,0.10);
+    }
+    .stack-card-bg1,
+    .stack-card-bg2,
+    .stack-card-bg3 {
+      background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(241,247,252,0.96));
+    }
+    .stack-step { color: rgba(15,140,141,0.16); }
+    .stack-title { color: #14263A; }
+    .stack-desc { color: #607285; }
+    .clock-wrapper {
+      align-items: start;
+    }
+    .clock-card {
+      padding: 40px 34px;
+      background: linear-gradient(180deg, #ffffff 0%, #eef5fa 100%);
+      box-shadow: 0 26px 56px rgba(20,38,58,0.08);
+      height: auto;
+    }
+    .clock-label { color: #0f8c8d; }
+    .clock-display {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      align-items: stretch;
+    }
+    .clock-unit {
+      min-width: 0;
+      padding: 16px 10px 14px;
+      border-radius: 20px;
+      background: rgba(15,140,141,0.05);
+      border: 1px solid rgba(15,140,141,0.10);
+    }
+    .clock-num {
+      color: #14263A;
+      font-size: clamp(2.4rem, 4.2vw, 3.5rem);
+    }
+    .clock-unit-label { color: #607285; }
+    .clock-sep {
+      display: none;
+    }
+    .clock-deadline-name {
+      color: #14263A;
+      margin-top: 26px;
+    }
+    .clock-deadline-date { color: #607285; }
+    .clock-info-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(244,248,252,0.95));
+      height: auto;
+    }
+    .deadline-item {
+      background: rgba(15,140,141,0.045);
+      border: 1px solid rgba(20,38,58,0.06);
+      color: #24384e;
+    }
+    .deadline-date { color: #607285; }
+    .founder-photo-wrap,
+    .contact-item,
+    .founder-cred,
+    .founder-hq {
+      background: rgba(244,248,252,0.95);
+      border-color: rgba(20,38,58,0.08);
+    }
+    .contact-side-copy,
+    .contact-note,
+    .founder-body,
+    .blog-excerpt,
+    .why-desc,
+    .bento-desc,
+    .sec-header p {
+      color: #607285;
+    }
+    .cta-card {
+      background: linear-gradient(135deg, #ffffff 0%, #edf6fa 55%, #f9fcff 100%);
+      border: 1px solid rgba(15,140,141,0.14);
+    }
+    .cta-card::before {
+      background: radial-gradient(circle, rgba(15,140,141,0.08) 0%, transparent 70%);
+    }
+    .btn-whatsapp {
+      background: linear-gradient(135deg, #0f8c8d, #127476);
+      box-shadow: 0 18px 32px rgba(15,140,141,0.18);
+    }
+    .btn-secondary {
+      background: rgba(255,255,255,0.8);
+    }
+    .btn-secondary:hover {
+      background: rgba(15,140,141,0.08);
+    }
+    footer {
+      background: linear-gradient(180deg, #f4f8fb 0%, #eef3f8 100%);
+    }
+    .footer-bottom {
+      border-top-color: rgba(20,38,58,0.08);
+    }
+    @media (max-width: 900px) {
+      .clock-display {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+    }
+    @media (max-width: 768px) {
+      .hero-stats {
+        gap: 18px;
+      }
+      .stat-item {
+        min-width: 120px;
+      }
+      .clock-card,
+      .clock-info-card,
+      .contact-card,
+      .founder-content,
+      .founder-avatar-card,
+      .cta-card {
+        padding-left: 24px;
+        padding-right: 24px;
+      }
+      .clock-display {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .clock-unit {
+        padding: 14px 8px 12px;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -948,18 +1306,18 @@
   <!-- ═══ NAV ═══════════════════════════════════════════ -->
   <nav id="nav">
     <div class="nav-logo">
-      <div class="nav-logo-icon">CS</div>
+      <div class="nav-logo-icon"><img src="CA%20Amit/LOGO.jpeg" alt="Cleartax Saathi logo" /></div>
       <span class="nav-logo-text">Cleartax <span>Saathi</span></span>
     </div>
     <ul class="nav-links">
       <li><a href="#hero">Home</a></li>
       <li><a href="#services">Services</a></li>
       <li><a href="#compliance">Compliance</a></li>
-      <li><a href="#blogs">Blogs</a></li>
+      <li><a href="blogs.html">Blogs</a></li>
       <li><a href="#contact">Contact Us</a></li>
       <li><a href="#about-us">About Us</a></li>
     </ul>
-    <a href="https://wa.me/918882453238" class="nav-cta">Get Started →</a>
+    <a href="https://wa.me/918882453238?text=Hi%20Amit%2C%20I%20want%20to%20discuss%20my%20tax%20or%20compliance%20requirement." class="nav-cta">Chat on WhatsApp</a>
   </nav>
 
   <!-- ═══ HERO ══════════════════════════════════════════ -->
@@ -1232,8 +1590,8 @@
         <div class="glass-card founder-avatar-card reveal">
           <div class="founder-photo-wrap">
             <img
-              src="CA%20Amit/CA%20amit%20photo%20with%20logo%20on%20backgroud%20wall.jpeg"
-              alt="Amit Goyal at office wall branding"
+              src="CA%20Amit/CA%20amit%20photo%20from%20office.jpeg"
+              alt="Amit Goyal in office"
               class="founder-photo"
             />
           </div>
@@ -1328,29 +1686,32 @@
   <section id="blogs" style="padding: 120px 48px;">
     <div class="section-inner">
       <div class="sec-header reveal" style="margin:0 auto 64px;text-align:center;max-width:680px;">
-        <div class="tag" style="margin: 0 auto 16px;">Latest Insights</div>
-        <h2>Practical tax and compliance <span class="em">guides for founders.</span></h2>
-        <p>Use these featured reading blocks as your blog section until full articles are added. They give visitors immediate educational value and support SEO-friendly expansion later.</p>
+        <div class="tag" style="margin: 0 auto 16px;">Insights</div>
+        <h2>Read practical tax notes on a dedicated <span class="em">blog experience.</span></h2>
+        <p>We keep the homepage focused on services and trust. Articles now live on a separate blog page, with each topic opening into its own full reading page.</p>
       </div>
       <div class="blog-grid">
         <article class="glass-card blog-card reveal">
           <div class="blog-meta"><span class="blog-dot"></span>GST Guide</div>
           <h3 class="blog-title">GST registration checklist for new businesses in India</h3>
-          <p class="blog-excerpt">A simple walkthrough of documents, turnover thresholds, and the common registration mistakes that delay onboarding for startups and service firms.</p>
-          <a href="https://wa.me/918882453238?text=Hi%20Amit%2C%20I%20want%20help%20with%20GST%20registration." class="blog-link">Ask about GST registration</a>
+          <p class="blog-excerpt">The essential documents, turnover thresholds, and first-step decisions every founder should keep ready before registration begins.</p>
+          <a href="blog-gst-registration-checklist.html" class="blog-link">Read article &rarr;</a>
         </article>
         <article class="glass-card blog-card reveal">
           <div class="blog-meta"><span class="blog-dot"></span>Income Tax</div>
           <h3 class="blog-title">How to prepare your books before ITR filing season starts</h3>
-          <p class="blog-excerpt">Learn what records to organize early, how to separate personal and business expenses, and what your accountant needs before return filing begins.</p>
-          <a href="https://wa.me/918882453238?text=Hi%20Amit%2C%20I%20want%20help%20with%20ITR%20filing." class="blog-link">Discuss your ITR filing</a>
+          <p class="blog-excerpt">A practical prep guide for keeping records clean, separating expenses, and making return filing season less stressful.</p>
+          <a href="blog-prepare-books-itr.html" class="blog-link">Read article &rarr;</a>
         </article>
         <article class="glass-card blog-card reveal">
           <div class="blog-meta"><span class="blog-dot"></span>Compliance</div>
           <h3 class="blog-title">Monthly compliance calendar every founder should follow</h3>
-          <p class="blog-excerpt">A founder-friendly view of recurring GST, TDS, ROC, and bookkeeping deadlines so nothing slips and penalties never become a surprise.</p>
-          <a href="https://wa.me/918882453238?text=Hi%20Amit%2C%20I%20need%20a%20monthly%20compliance%20plan." class="blog-link">Get a compliance plan</a>
+          <p class="blog-excerpt">A simple founder-friendly monthly rhythm for GST, TDS, ROC, bookkeeping, and the checks that prevent last-minute panic.</p>
+          <a href="blog-monthly-compliance-calendar.html" class="blog-link">Read article &rarr;</a>
         </article>
+      </div>
+      <div style="margin-top:36px;text-align:center;">
+        <a href="blogs.html" class="btn-secondary">Browse All Articles</a>
       </div>
     </div>
   </section>
@@ -1396,6 +1757,10 @@
             <div class="contact-label">Consultation Window</div>
             <div class="contact-value">10:00 AM to 7:00 PM</div>
           </div>
+          <div class="contact-photo-card">
+            <img src="CA%20Amit/Office%20Table%20Photo.jpeg" alt="Office desk at Cleartax Saathi" />
+            <div class="contact-photo-caption">A working desk inside the Cleartax Saathi office, reflecting the calm and hands-on advisory environment clients can expect.</div>
+          </div>
         </div>
       </div>
     </div>
@@ -1424,7 +1789,7 @@
     <div class="footer-grid">
       <div>
         <div class="footer-logo nav-logo">
-          <div class="nav-logo-icon">CS</div>
+          <div class="nav-logo-icon"><img src="CA%20Amit/LOGO.jpeg" alt="Cleartax Saathi logo" /></div>
           <span class="nav-logo-text">Cleartax <span>Saathi</span></span>
         </div>
         <p class="footer-desc" style="margin-top:16px;">New Delhi's premier tax and business consultancy. Expert-led. Tech-driven. Trusted since 2012.</p>
@@ -1451,7 +1816,7 @@
           <li><a href="#about-us">About Us</a></li>
           <li><a href="#why">Why Cleartax Saathi</a></li>
           <li><a href="#compliance">Compliance Calendar</a></li>
-          <li><a href="#blogs">Blogs</a></li>
+          <li><a href="blogs.html">Blogs</a></li>
         </ul>
       </div>
 
@@ -1469,7 +1834,7 @@
     </div>
 
     <div class="footer-bottom">
-      <span>© 2026 <span class="footer-em">Cleartax Saathi</span>. All rights reserved. Registered in India.</span>
+      <span>&copy; 2026 <span class="footer-em">Cleartax Saathi</span>. All rights reserved. Registered in India.</span>
       <span>Crafted with precision in New Delhi 🇮🇳</span>
     </div>
   </footer>
@@ -1517,13 +1882,57 @@
 
     // ── 4. Compliance Clock ───────────────────────────────
     function updateClock() {
-      const deadlines = [
-        { name: 'GSTR-1 (Mar 2026)',   date: new Date('2026-04-11T23:59:59') },
-        { name: 'GSTR-3B (Mar 2026)', date: new Date('2026-04-20T23:59:59') },
-        { name: 'TDS Return Q4',       date: new Date('2026-05-31T23:59:59') },
-      ];
       const now = new Date();
-      const next = deadlines.find(d => d.date > now) || deadlines[deadlines.length - 1];
+      const endOfDay = (date) => new Date(date.getFullYear(), date.getMonth(), date.getDate(), 23, 59, 59);
+      const formatPeriod = (date) => date.toLocaleDateString('en-IN', { month: 'short', year: 'numeric' });
+
+      const nextMonthlyDeadline = (day, title, offsetMonths = 0) => {
+        let target = new Date(now.getFullYear(), now.getMonth() + offsetMonths, day, 23, 59, 59);
+        if (target <= now) target = new Date(now.getFullYear(), now.getMonth() + offsetMonths + 1, day, 23, 59, 59);
+        const periodDate = new Date(target.getFullYear(), target.getMonth() - 1, 1);
+        return {
+          name: `${title} (${formatPeriod(periodDate)})`,
+          date: target
+        };
+      };
+
+      const nextQuarterlyTds = () => {
+        const quarters = [
+          { dueMonth: 4, dueDay: 31, label: 'Q4' },
+          { dueMonth: 6, dueDay: 31, label: 'Q1' },
+          { dueMonth: 9, dueDay: 31, label: 'Q2' },
+          { dueMonth: 12, dueDay: 31, label: 'Q3' }
+        ];
+        for (let year = now.getFullYear(); year <= now.getFullYear() + 1; year++) {
+          for (const quarter of quarters) {
+            const due = endOfDay(new Date(year, quarter.dueMonth, quarter.dueDay));
+            if (due > now) {
+              return {
+                name: `TDS Return ${quarter.label} FY${String(year).slice(-2)}-${String(year + 1).slice(-2)}`,
+                date: due
+              };
+            }
+          }
+        }
+      };
+
+      const nextItrDeadline = () => {
+        let due = endOfDay(new Date(now.getFullYear(), 6, 31));
+        if (due <= now) due = endOfDay(new Date(now.getFullYear() + 1, 6, 31));
+        return {
+          name: `ITR Filing (Non-Audit ${due.getFullYear()})`,
+          date: due
+        };
+      };
+
+      const deadlines = [
+        nextMonthlyDeadline(11, 'GSTR-1'),
+        nextMonthlyDeadline(20, 'GSTR-3B'),
+        nextQuarterlyTds(),
+        nextItrDeadline()
+      ].sort((a, b) => a.date - b.date);
+
+      const next = deadlines[0];
       const diff = Math.max(0, next.date - now);
       const days  = Math.floor(diff / 86400000);
       const hours = Math.floor((diff % 86400000) / 3600000);
@@ -1537,6 +1946,15 @@
       document.getElementById('cd-name').textContent  = next.name;
       const opts = { day:'numeric', month:'long', year:'numeric' };
       document.getElementById('cd-date').textContent  = 'Deadline: ' + next.date.toLocaleDateString('en-IN', opts);
+
+      const deadlineItems = document.querySelectorAll('.deadline-item');
+      deadlines.slice(0, 4).forEach((deadline, index) => {
+        const item = deadlineItems[index];
+        if (!item) return;
+        const spans = item.querySelectorAll('span');
+        if (spans[1]) spans[1].textContent = deadline.name;
+        if (spans[2]) spans[2].textContent = deadline.date.toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' });
+      });
     }
     updateClock();
     setInterval(updateClock, 1000);
@@ -1634,12 +2052,12 @@
       }
     );
 
-    // Nav shrink on scroll
+    // Nav background on scroll
     ScrollTrigger.create({
       start: 'top -60',
       onUpdate: self => {
         document.getElementById('nav').style.background = self.direction === 1
-          ? 'rgba(8,15,30,0.95)' : 'rgba(8,15,30,0.7)';
+          ? 'rgba(255,255,255,0.96)' : 'rgba(255,255,255,0.90)';
       }
     });
 
